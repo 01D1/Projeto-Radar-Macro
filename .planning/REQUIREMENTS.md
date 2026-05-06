@@ -87,34 +87,35 @@ These are valuable but not blocking v1. Schedule for next milestone.
 
 | REQ-ID | Phase | Status |
 |--------|-------|--------|
-| FOUND-01 | — | — |
-| FOUND-02 | — | — |
-| FOUND-03 | — | — |
-| FOUND-04 | — | — |
-| ING-01 | — | — |
-| ING-02 | — | — |
-| ING-03 | — | — |
-| ING-04 | — | — |
-| ING-05 | — | — |
-| ING-06 | — | — |
-| ING-07 | — | — |
-| FIN-01 | — | — |
-| FIN-02 | — | — |
-| FIN-03 | — | — |
-| FIN-04 | — | — |
-| FIN-05 | — | — |
-| FIN-06 | — | — |
-| INT-01 | — | — |
-| INT-02 | — | — |
-| INT-03 | — | — |
-| INT-04 | — | — |
-| INT-05 | — | — |
-| INT-06 | — | — |
-| DEL-01 | — | — |
-| DEL-02 | — | — |
-| DEL-03 | — | — |
-| DEL-04 | — | — |
-| DEL-05 | — | — |
+| FOUND-01 | Phase 1 | Pending |
+| FOUND-02 | Phase 1 | Pending |
+| FOUND-03 | Phase 1 | Pending |
+| FOUND-04 | Phase 1 | Pending |
+| ING-01 | Phase 2 | Pending |
+| ING-02 | Phase 2 | Pending |
+| ING-03 | Phase 2 | Pending |
+| ING-04 | Phase 2 | Pending |
+| ING-05 | Phase 2 | Pending |
+| ING-06 | Phase 2 | Pending |
+| ING-07 | Phase 2 | Pending |
+| FIN-01 | Phase 3 | Pending |
+| FIN-02 | Phase 3 | Pending |
+| FIN-03 | Phase 3 | Pending |
+| FIN-04 | Phase 3 | Pending |
+| FIN-05 | Phase 3 | Pending |
+| FIN-06 | Phase 3 | Pending |
+| INT-01 | Phase 4 | Pending |
+| INT-02 | Phase 4 | Pending |
+| INT-03 | Phase 4 | Pending |
+| INT-04 | Phase 4 | Pending |
+| INT-05 | Phase 4 | Pending |
+| INT-06 | Phase 4 | Pending |
+| DEL-01 | Phase 5 | Pending |
+| DEL-02 | Phase 5 | Pending |
+| DEL-03 | Phase 5 | Pending |
+| DEL-04 | Phase 5 | Pending |
+| DEL-05 | Phase 5 | Pending |
 
 ---
 *Requirements defined: 2026-05-06*
+*Traceability populated: 2026-05-06*
