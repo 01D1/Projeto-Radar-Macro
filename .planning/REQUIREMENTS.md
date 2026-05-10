@@ -7,7 +7,7 @@
 
 ### FOUND — Foundation & Cleanup
 
-- [ ] **FOUND-01**: Duplicate codebases archived — single canonical source under `Analista de Investimentos/12_PYTHON/src/`; `_ARQUIVO_Analista_vs_code/` and `Meu segundo Cerébro/12_PYTHON/` removed from active use
+- [x] **FOUND-01**: Duplicate codebases archived — single canonical source under `Analista de Investimentos/12_PYTHON/src/`; `_ARQUIVO_Analista_vs_code/` and `Meu segundo Cerébro/12_PYTHON/` removed from active use *(completed: 01-01, 2026-05-10)*
 - [ ] **FOUND-02**: All credentials and paths migrated from source code to `.env` file; `python-dotenv` + `pydantic-settings` loads config on startup; `.env` added to `.gitignore`
 - [ ] **FOUND-03**: Retry logic applied to all external API calls (CVM, BCB, yfinance, Anthropic, Telegram) using `tenacity` with exponential backoff; no uncaught API failures crash the pipeline
 - [ ] **FOUND-04**: Structured logging via `structlog` across all modules; each log entry includes module name, ticker (when relevant), and ingestion run ID; logs persisted to `logs/` with daily rotation
