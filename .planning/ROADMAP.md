@@ -5,7 +5,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: Foundation & Cleanup** — Secure credentials, consolidate codebases, wire retry/logging infrastructure
+- [x] **Phase 1: Foundation & Cleanup** — Secure credentials, consolidate codebases, wire retry/logging infrastructure (completed 2026-05-10)
 - [ ] **Phase 2: Reliable Data Ingestion** — All data sources (CVM, BCB, B3, news) running with retry, validation, and freshness tracking
 - [ ] **Phase 3: Financial Engine** — LTM aggregation, multiples, DCF (with bank bifurcation), and technical signals computed per ticker
 - [ ] **Phase 4: Intelligence Layer** — AI investment thesis generated, validated, cost-controlled, and versioned per ticker
@@ -124,7 +124,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Cleanup | 3/3 | In progress | — |
+| 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
 | 2. Reliable Data Ingestion | 0/4 | Not started | — |
 | 3. Financial Engine | 0/5 | Not started | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |

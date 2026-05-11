@@ -1,5 +1,5 @@
 ---
-status: partial
+status: resolved
 phase: 01-foundation-and-cleanup
 source: [01-VERIFICATION.md]
 started: 2026-05-10T22:35:00-03:00
@@ -24,14 +24,14 @@ schtasks /Query /FO LIST /TN "ValuationBancario_Tarde"
 
 Expected: `Task To Run` field contains `OneDrive - EPEJUD\DIEGO\OBSIDIAN` path.
 
-result: [pending]
+result: PASSED — "Tarefa a ser executada" field shows vault path (C:\Users\55819\OneDrive - EPEJUD\DIEGO\OBSIDIAN\...), not Downloads path. Verified 2026-05-10.
 
 ## Summary
 
 total: 1
-passed: 0
+passed: 1
 issues: 0
-pending: 1
+pending: 0
 skipped: 0
 blocked: 0
 
