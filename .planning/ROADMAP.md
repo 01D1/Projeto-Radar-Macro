@@ -48,12 +48,22 @@ Plans:
 4. News articles from 17+ RSS sources are ingested, deduplicated by URL, and tagged with the relevant watchlist ticker where detectable; IPE event PDFs have their text extracted and stored.
 5. Every scheduler run produces a structured summary log: duration, records updated per source, and any per-source failures — visible in `logs/`.
 
-**Plans:** 4 plans
-Plans:
+**Plans:** 4 plans (planned 2026-05-10)
+
+**Wave 1** *(parallel — no file overlap)*
 - [ ] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
 - [ ] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
+
+**Wave 2** *(blocked on Wave 1 — needs ingestion.db schema from 02-01)*
 - [ ] 02-03-PLAN.md — News sync (news_sync.py): cross-DB bridge from news_hunter/banco.db to ingestion.db with URL deduplication and B3 ticker tagging
+
+**Wave 3** *(blocked on Wave 2 — wires all three modules into scheduler)*
 - [ ] 02-04-PLAN.md — Ingestion scheduler wiring: 4 job functions in scheduler.py, bind_run_id, D-15 summary logs, schedules.yaml cron entries
+
+**Cross-cutting constraints:**
+- @retry(attempts=3, delay=2.0, backoff=2.0, jitter=0.5) on every external API call (all plans)
+- bind_run_id("ingest") at top of every scheduler job (Plan 04)
+- TEXT UUID primary keys, ISO date strings, no AUTOINCREMENT (Plan 01 schema — D-06)
 
 ---
 

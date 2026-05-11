@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 1 complete
+status: Phase 2 ready to execute
 last_updated: "2026-05-10"
 planning_complete: "2026-05-10"
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 4
+  total_plans: 8
   completed_plans: 3
 ---
 
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 
 ## Active Phase
 
-Phase 1: Foundation & Cleanup
-Status: In progress
-Current position: Phase 1 complete — ready for Phase 2
+Phase 2: Reliable Data Ingestion
+Status: Ready to execute (4 plans planned 2026-05-10)
+Current position: Planning complete — ready for /gsd-execute-phase 2
 
 ---
 
@@ -68,3 +68,4 @@ Current position: Phase 1 complete — ready for Phase 2
 - 2026-05-10: Plan 01-01 completed. Windows venv recreated, 5 test stub files created, pipeline.py cleaned, DEPRECATED.md added, schtasks updated.
 - 2026-05-10: Plan 01-02 completed. Live Telegram token removed, env renamed to .env with gitignore protection, startup guards wired in config/settings.py + src/main.py + news_hunter/main.py, pipeline banco completo wired to .env. FOUND-02 requirement satisfied. 5/5 credential tests green.
 - 2026-05-10: Plan 01-03 executed. FOUND-03 (errors.py + retry jitter + IngestionError), FOUND-04 (bind_run_id), CR-04 (startup guard moved inside app()) — all closed. 15/15 tests green.
+- 2026-05-10: Phase 2 planned. 4 plans in 3 waves. Research confirmed CDS Brasil at BCB SGS series 29039; pdfplumber installed for IPE PDFs; pandas-market-calendars missing (Wave 0 task in Plan 02-01). ING-01 through ING-07 covered.
