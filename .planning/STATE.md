@@ -4,10 +4,11 @@ milestone: v1.0
 milestone_name: milestone
 status: In progress
 last_updated: "2026-05-10"
+planning_complete: "2026-05-10"
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 3
+  total_plans: 4
   completed_plans: 2
 ---
 
@@ -64,3 +65,4 @@ Current position: Plan 01-03 (Wave 1/1)
 - 2026-05-06: Phase 1 context gathered via /gsd-discuss-phase 1. Resume file: .planning/phases/01-foundation-and-cleanup/01-CONTEXT.md
 - 2026-05-10: Plan 01-01 completed. Windows venv recreated, 5 test stub files created, pipeline.py cleaned, DEPRECATED.md added, schtasks updated.
 - 2026-05-10: Plan 01-02 completed. Live Telegram token removed, env renamed to .env with gitignore protection, startup guards wired in config/settings.py + src/main.py + news_hunter/main.py, pipeline banco completo wired to .env. FOUND-02 requirement satisfied. 5/5 credential tests green.
+- 2026-05-10: Plan 01-03 planned (gap closure). Covers FOUND-03 (errors.py + retry jitter + IngestionError) + FOUND-04 (bind_run_id) + CR-04 (move startup guard inside app()). Status: Ready to execute.
