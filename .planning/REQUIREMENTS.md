@@ -14,9 +14,9 @@
 
 ### ING — Data Ingestion
 
-- [ ] **ING-01**: CVM DFP (annual financial statements) downloaded, parsed from XML, and stored with account code normalization; raw XML preserved for reprocessing
-- [ ] **ING-02**: CVM ITR (quarterly financial statements) downloaded, parsed, and stored; reconciled with DFP for overlapping periods
-- [ ] **ING-03**: CVM IPE (corporate events) ingested and classified by event type (earnings release, fato relevante, dividend, guidance); PDF text extracted from event attachments
+- [x] **ING-01**: CVM DFP (annual financial statements) downloaded, parsed from XML, and stored with account code normalization; raw XML preserved for reprocessing *(completed: 02-01, 2026-05-10)*
+- [x] **ING-02**: CVM ITR (quarterly financial statements) downloaded, parsed, and stored; reconciled with DFP for overlapping periods *(completed: 02-01, 2026-05-10)*
+- [x] **ING-03**: CVM IPE (corporate events) ingested and classified by event type (earnings release, fato relevante, dividend, guidance); PDF text extracted from event attachments *(completed: 02-01, 2026-05-10)*
 - [ ] **ING-04**: BCB macro series (Selic, IPCA, PTAX, CDS Brazil, PIB) ingested via BCB SGS API with freshness timestamps; data freshness displayed in UI
 - [ ] **ING-05**: B3 price series (OHLCV + adjusted close) ingested via yfinance for watchlist tickers; corporate actions adjusted; gaps flagged rather than interpolated
 - [ ] **ING-06**: News RSS feeds (17+ sources) ingested on schedule; articles deduplicated by URL; each item tagged with relevant ticker from watchlist when detectable
@@ -91,9 +91,9 @@ These are valuable but not blocking v1. Schedule for next milestone.
 | FOUND-02 | Phase 1 | Pending |
 | FOUND-03 | Phase 1 | Pending |
 | FOUND-04 | Phase 1 | Pending |
-| ING-01 | Phase 2 | Pending |
-| ING-02 | Phase 2 | Pending |
-| ING-03 | Phase 2 | Pending |
+| ING-01 | Phase 2 | Complete (02-01) |
+| ING-02 | Phase 2 | Complete (02-01) |
+| ING-03 | Phase 2 | Complete (02-01) |
 | ING-04 | Phase 2 | Pending |
 | ING-05 | Phase 2 | Pending |
 | ING-06 | Phase 2 | Pending |

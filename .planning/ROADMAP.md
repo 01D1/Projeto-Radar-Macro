@@ -51,7 +51,7 @@ Plans:
 **Plans:** 4 plans (planned 2026-05-10)
 
 **Wave 1** *(parallel — no file overlap)*
-- [ ] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
+- [x] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
 - [ ] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
 
 **Wave 2** *(blocked on Wave 1 — needs ingestion.db schema from 02-01)*
