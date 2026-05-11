@@ -9,7 +9,7 @@ progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 8
+  completed_plans: 9
 ---
 
 # Project State — Investment Intelligence Platform
@@ -29,8 +29,8 @@ Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
 Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
 
 Phase 3: Financial Engine — IN PROGRESS (2026-05-11)
-Status: Plan 01 complete; 74/74 tests green; FIN-01 partial, BUG-01/GAP-02/D-01/D-06 closed
-Current position: Plan 02 next (Multiples computation)
+Status: Plans 01-02 complete; 77/77 tests green; FIN-01 partial, FIN-02 closed, BUG-01/GAP-02/D-01/D-06 closed
+Current position: Plan 03 next (DCF engine)
 
 ---
 
@@ -69,6 +69,10 @@ Current position: Plan 02 next (Multiples computation)
 - 2026-05-11 [03-01]: is_bank=True força ebitda=None em _aggregate_ltm (Pitfall 2 — bancos não têm EBIT/EBITDA)
 - 2026-05-11 [03-01]: test_db_schema.py atualizado para 8 tabelas; assertions alteradas para issubset em vez de igualdade exata
 - 2026-05-11 [03-01]: AccountMapper._map_row chamado por row em parse_and_store() — _mapper = AccountMapper() instanciado uma vez antes do loop
+- 2026-05-11 [03-02]: calculate_industrial_metrics() assinatura real requer ticker+year+params individuais (não dict) — adaptado no orchestrator sem alterar calculate_metrics.py (D-11)
+- 2026-05-11 [03-02]: ev_revenue ausente de IndustrialMetrics — computado inline: (market_cap + net_debt) / net_revenue
+- 2026-05-11 [03-02]: market_cap = price × shares_outstanding no orchestrator — nenhuma função de métricas o retorna diretamente
+- 2026-05-11 [03-02]: compute_wacc() stub retorna fallback (0.12, 0.105, 0.015, True) em vez de NotImplementedError — mantém run_ticker() funcional antes do Plan 03-03
 
 ---
 
@@ -92,6 +96,7 @@ Current position: Plan 02 next (Multiples computation)
 | 02-reliable-data-ingestion | 03 | 3min | 1 | 2 |
 | 02-reliable-data-ingestion | 04 | 8min | 2 | 3 |
 | 03-financial-engine | 01 | 8min | 2 | 7 |
+| 03-financial-engine | 02 | 12min | 2 | 2 |
 
 ---
 
@@ -108,4 +113,5 @@ Current position: Plan 02 next (Multiples computation)
 - 2026-05-11: Plan 02-04 completed. 4 ingestion jobs wired into scheduler (_JOB_REGISTRY), schedules.yaml updated with 4 cron entries, 65/65 tests green. ING-07 satisfied. Phase 2 complete.
 - 2026-05-11: Phase 3 context gathered via /gsd-discuss-phase 3. Resume file: .planning/phases/03-financial-engine/03-CONTEXT.md
 - 2026-05-11: Plan 03-01 completed. BUG-01 (encoding), GAP-02 (import), D-01 (schema), D-06 (AccountMapper wire-up), FIN-01 partial (LTM). 74/74 tests green.
-  Last session: 2026-05-11T18:22:43Z
+- 2026-05-11: Plan 03-02 completed. FIN-02 (multiples computation) — _get_current_price(), _compute_multiples() implementados, run_ticker() wired, 3 FIN-02 tests. 77/77 tests green.
+  Last session: 2026-05-11T18:42:00Z
