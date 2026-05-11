@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 3 planned — ready to execute
+status: Phase 3 in progress — executing
 last_updated: "2026-05-11"
 planning_complete: "2026-05-11"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # Project State — Investment Intelligence Platform
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-06)
 
 **Core value:** AI-powered investment decision engine — tells clients what to do and why, not just what's happening
-**Current focus:** Phase 2 (Phase 1 complete 2026-05-10)
+**Current focus:** Phase 3 — Plan 01 complete, executing plans 02-05
 
 ---
 
@@ -27,7 +27,10 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 
 Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
 Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
-Current position: Phase 3 next (Financial Engine)
+
+Phase 3: Financial Engine — IN PROGRESS (2026-05-11)
+Status: Plan 01 complete; 74/74 tests green; FIN-01 partial, BUG-01/GAP-02/D-01/D-06 closed
+Current position: Plan 02 next (Multiples computation)
 
 ---
 
@@ -61,6 +64,11 @@ Current position: Phase 3 next (Financial Engine)
 - 2026-05-11 [02-04]: job_news_ingest uses subprocess.run list form — [sys.executable, main.py, --coletar], cwd=news_hunter, timeout=300
 - 2026-05-11 [02-04]: Test pattern: sys.modules["config.settings"] for Pydantic Settings patch (not config.settings.settings)
 - 2026-05-11 [02-04]: Test pattern: patch get_logger at source for D-15 log capture (jobs use internal _log not module-level log)
+- 2026-05-11 [03-01]: EBITDA derivado como EBIT + D&A; ausência de linha DFC resulta em None (não 0) — evita falso positivo
+- 2026-05-11 [03-01]: FCF=None quando cfo ou capex ausentes nos rows ITR (Pitfall 3) — "0 rows" distinto de "row com valor 0"
+- 2026-05-11 [03-01]: is_bank=True força ebitda=None em _aggregate_ltm (Pitfall 2 — bancos não têm EBIT/EBITDA)
+- 2026-05-11 [03-01]: test_db_schema.py atualizado para 8 tabelas; assertions alteradas para issubset em vez de igualdade exata
+- 2026-05-11 [03-01]: AccountMapper._map_row chamado por row em parse_and_store() — _mapper = AccountMapper() instanciado uma vez antes do loop
 
 ---
 
@@ -83,6 +91,7 @@ Current position: Phase 3 next (Financial Engine)
 | 02-reliable-data-ingestion | 02 | 7min | 2 | 4 |
 | 02-reliable-data-ingestion | 03 | 3min | 1 | 2 |
 | 02-reliable-data-ingestion | 04 | 8min | 2 | 3 |
+| 03-financial-engine | 01 | 8min | 2 | 7 |
 
 ---
 
@@ -98,4 +107,5 @@ Current position: Phase 3 next (Financial Engine)
 - 2026-05-10: Plan 02-03 completed. news_sync.py cross-DB bridge (banco.db → news_articles), INSERT OR IGNORE URL dedup, B3 ticker regex tagging, 9/9 tests green. ING-06 satisfied.
 - 2026-05-11: Plan 02-04 completed. 4 ingestion jobs wired into scheduler (_JOB_REGISTRY), schedules.yaml updated with 4 cron entries, 65/65 tests green. ING-07 satisfied. Phase 2 complete.
 - 2026-05-11: Phase 3 context gathered via /gsd-discuss-phase 3. Resume file: .planning/phases/03-financial-engine/03-CONTEXT.md
-  Last session: 2026-05-11T02:33:00Z
+- 2026-05-11: Plan 03-01 completed. BUG-01 (encoding), GAP-02 (import), D-01 (schema), D-06 (AccountMapper wire-up), FIN-01 partial (LTM). 74/74 tests green.
+  Last session: 2026-05-11T18:22:43Z
