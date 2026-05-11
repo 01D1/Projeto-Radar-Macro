@@ -31,7 +31,7 @@
 Plans:
 - [x] 01-01-PLAN.md — Codebase consolidation: archive duplicate src/ trees, fix import paths, sys.path cleanup, venv rebuild
 - [x] 01-02-PLAN.md — Credentials & config migration: remove hardcoded tokens, wire pydantic-settings + .env, startup validation
-- [ ] 01-03-PLAN.md — Gap closure: create errors.py (IngestionError), extend retry.py (jitter + IngestionError), add bind_run_id to logger.py, move CR-04 production guard inside app()
+- [x] 01-03-PLAN.md — Gap closure: create errors.py (IngestionError), extend retry.py (jitter + IngestionError), add bind_run_id to logger.py, move CR-04 production guard inside app()
 
 ---
 
@@ -124,7 +124,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Cleanup | 2/3 | In progress | — |
+| 1. Foundation & Cleanup | 3/3 | In progress | — |
 | 2. Reliable Data Ingestion | 0/4 | Not started | — |
 | 3. Financial Engine | 0/5 | Not started | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
