@@ -9,7 +9,7 @@ progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 9
+  completed_plans: 10
 ---
 
 # Project State — Investment Intelligence Platform
@@ -29,8 +29,8 @@ Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
 Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
 
 Phase 3: Financial Engine — IN PROGRESS (2026-05-11)
-Status: Plans 01-02-04 complete; 81/81 tests green; FIN-01 partial, FIN-02 closed, FIN-05 closed, BUG-01/GAP-02/D-01/D-06 closed
-Current position: Plan 03 next (DCF engine — Wave 2)
+Status: Plans 01-02-03-04 complete; 86/86 tests green; FIN-01 partial, FIN-02 closed, FIN-03 closed, FIN-04 closed, FIN-05 closed, BUG-01/GAP-02/D-01/D-06 closed
+Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
 
 ---
 
@@ -78,6 +78,10 @@ Current position: Plan 03 next (DCF engine — Wave 2)
 - 2026-05-11 [03-04]: gordon_assumptions para bancos tem apenas coe/terminal_growth/payout_ratio — ke lido diretamente de gordon_assumptions.coe (0.135)
 - 2026-05-11 [03-04]: _write_dcf_row() implementado em Plan 03-04 (Plan 03-03 ainda não executado) — helper compartilhado para DDM e DCF industrial
 - 2026-05-11 [03-04]: BankMetricsCalc tem nii_margin (não nim) — campo é NIM proxy (NII / Total Assets)
+- 2026-05-11 [03-03]: cfg.ev_ebitda_assumptions é propriedade nível setor (SectorConfig.ev_ebitda_assumptions) — não dentro de cfg.dcf_assumptions
+- 2026-05-11 [03-03]: _is_stale_date() existente reutilizado como verificador de staleness de macro — evita duplicata _is_macro_stale()
+- 2026-05-11 [03-03]: DCFAssumptions fields (risk_free_rate, equity_risk_premium, pre_tax_cost_of_debt) diferem das chaves sectors.yaml (risk_free, erp, cost_of_debt) — mapeamento explícito em _compute_dcf_industrial()
+- 2026-05-11 [03-03]: Live WACC override: risk_free_rate = ke_live - beta*erp garante DCFAssumptions.wacc == compute_wacc() result (D-09)
 
 ---
 
@@ -103,6 +107,7 @@ Current position: Plan 03 next (DCF engine — Wave 2)
 | 03-financial-engine | 01 | 8min | 2 | 7 |
 | 03-financial-engine | 02 | 12min | 2 | 2 |
 | 03-financial-engine | 04 | 15min | 2 | 2 |
+| 03-financial-engine | 03 | 18min | 2 | 2 |
 
 ---
 
@@ -121,4 +126,5 @@ Current position: Plan 03 next (DCF engine — Wave 2)
 - 2026-05-11: Plan 03-01 completed. BUG-01 (encoding), GAP-02 (import), D-01 (schema), D-06 (AccountMapper wire-up), FIN-01 partial (LTM). 74/74 tests green.
 - 2026-05-11: Plan 03-02 completed. FIN-02 (multiples computation) — _get_current_price(), _compute_multiples() implementados, run_ticker() wired, 3 FIN-02 tests. 77/77 tests green.
 - 2026-05-11: Plan 03-04 completed. FIN-05 (bank DDM model) — _write_dcf_row(), _compute_bank_model() implementados, is_bank_model routing guard em run_ticker(), 4 FIN-05 tests. 81/81 tests green.
-  Last session: 2026-05-11T19:05:00Z
+- 2026-05-11: Plan 03-03 completed. FIN-03 (compute_wacc real) + FIN-04 (input validation) — compute_wacc() de macro_series, _validate_dcf_inputs(), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple), 5 FIN-03/FIN-04 tests. 86/86 tests green.
+  Last session: 2026-05-11T19:28:00Z
