@@ -80,12 +80,26 @@ Plans:
 4. The DCF model rejects invalid inputs before running (terminal growth >= WACC, WACC <= 5%) and flags fair values outside the 0.1x–5.0x price range as "FORA DO INTERVALO CONFIAVEL" — no zero-value or astronomically wrong outputs reach downstream consumers.
 5. Bank tickers (ITUB4, BBDC4, BBAS3, SANB11, BPAC11, etc.) are automatically routed to a NIM-based / ROE / dividend discount model; industrial tickers receive the standard EBITDA/FCFF DCF; technical signals (RSI-14, MACD, MA crossover, composite momentum score) are computed for all tickers.
 
-**Plans:**
-1. LTM aggregation engine — implement rolling 4-quarter ITR sum, DFP reconciliation, output schema; handle COSIF bank accounts separately from IFRS industrials
-2. Multiples computation — implement P/E, EV/EBITDA, P/BV, dividend yield, EV/Revenue with daily price refresh and missing-data flagging
-3. DCF engine (industrial) — implement WACC derivation, 5-year FCF projection, terminal value, input validation guards (terminal growth vs WACC), confidence interval check
-4. Bank financial model — implement NIM-based model, ROE analysis, DDM for dividend-paying banks; wire sector routing via `SectorConfig`
-5. Technical signals — implement RSI-14, MACD (12/26/9), 50/200-day MA, crossover signal, composite momentum score (0–100)
+**Plans:** 5 plans (planned 2026-05-11)
+
+**Wave 0** *(must complete first — fixes blocking bugs and creates test + schema infrastructure)*
+- [ ] 03-01-PLAN.md — BUG-01 fix (sector_config.py encoding), GAP-02 fix (account_mapper.py import), financial_* DB schema (db.py), LTM aggregation engine + AccountMapper wire-up (financial_engine.py), test stubs
+
+**Wave 1** *(parallel — no file overlap between 03-02 and 03-04)*
+- [ ] 03-02-PLAN.md — Multiples computation: _get_current_price(), _compute_multiples(), industrial + bank routing, missing-price flagging
+- [ ] 03-04-PLAN.md — Bank financial model: _compute_bank_model(), run_ddm() wire-up, bank LTM via BankAccountMapper, EBITDA=NULL for banks
+
+**Wave 2** *(blocked on Wave 0 and Wave 1 — reads from financial_ltm)*
+- [ ] 03-03-PLAN.md — DCF engine: compute_wacc() (live Selic+CDS from macro_series), _validate_dcf_inputs() (T-DCF-01 guard), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple paths)
+
+**Wave 3** *(blocked on all prior waves — signals + scheduler wiring)*
+- [ ] 03-05-PLAN.md — Technical signals (RSI-14, MACD 12/26/9, MA50/200, momentum score 0-100) + job_financial_engine() scheduler wiring + schedules.yaml cron entry
+
+**Cross-cutting constraints:**
+- All SQL uses parameterized queries — never f-string with ticker (T-DCF-02)
+- _validate_dcf_inputs() MUST fire before run_dcf() — T-DCF-01 (terminal_growth >= WACC → infinity)
+- EBITDA=NULL for all bank tickers (COSIF accounting — no EBIT line)
+- financial_* tables use INSERT OR REPLACE keyed by (ticker, computed_date) — D-04
 
 ---
 
@@ -137,9 +151,10 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
 | 2. Reliable Data Ingestion | 4/4 | Complete | 2026-05-11 |
-| 3. Financial Engine | 0/5 | Not started | — |
+| 3. Financial Engine | 0/5 | Planned | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |
 
 ---
 *Roadmap created: 2026-05-06*
+*Phase 3 planned: 2026-05-11*
