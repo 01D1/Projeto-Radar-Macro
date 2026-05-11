@@ -27,10 +27,11 @@
 3. Any external API call (CVM, BCB, yfinance, Anthropic, Telegram) that fails due to a transient network error automatically retries with exponential backoff; a permanent failure surfaces a structured error log entry rather than an unhandled exception crash.
 4. Every pipeline run produces structured log output (module name, ticker, run ID) in `logs/`; log files rotate daily; a developer can trace any execution path end-to-end from log output alone.
 
-**Plans:**
-1. Codebase consolidation — archive duplicate `src/` trees, retire `pipeline banco completo/` legacy modules, fix all import paths to use `src.` prefix, resolve `sys.path` manipulation
-2. Credentials & config migration — remove all hardcoded tokens and paths, wire `pydantic-settings` + `.env`, add startup validation for required keys
-3. Retry & logging infrastructure — wrap all external API calls with `tenacity`, deploy `structlog` across all modules with run ID injection and daily log rotation
+**Plans:** 3 plans
+Plans:
+- [x] 01-01-PLAN.md — Codebase consolidation: archive duplicate src/ trees, fix import paths, sys.path cleanup, venv rebuild
+- [x] 01-02-PLAN.md — Credentials & config migration: remove hardcoded tokens, wire pydantic-settings + .env, startup validation
+- [ ] 01-03-PLAN.md — Gap closure: create errors.py (IngestionError), extend retry.py (jitter + IngestionError), add bind_run_id to logger.py, move CR-04 production guard inside app()
 
 ---
 
