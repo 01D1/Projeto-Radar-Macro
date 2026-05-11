@@ -48,11 +48,12 @@ Plans:
 4. News articles from 17+ RSS sources are ingested, deduplicated by URL, and tagged with the relevant watchlist ticker where detectable; IPE event PDFs have their text extracted and stored.
 5. Every scheduler run produces a structured summary log: duration, records updated per source, and any per-source failures — visible in `logs/`.
 
-**Plans:**
-1. CVM ingestion unification — consolidate `cvm_downloader.py`, DFP/ITR/IPE parsers into single `src/ingestion/` layer with XML storage, period reconciliation, and retry from Phase 1
-2. BCB + B3 price ingestion — wire BCB SGS API with freshness tracking and real failure alerting; wire B3/yfinance with gap detection and corporate action adjustment
-3. News & IPE ingestion — integrate `news_hunter/` RSS crawler into `src/` scheduler, implement URL deduplication, ticker tagging, and IPE PDF text extraction
-4. Ingestion scheduler & health — configure daily cron schedule via `.env`, emit per-run structured summary, wire `ING-07` scheduler with run logging
+**Plans:** 4 plans
+Plans:
+- [ ] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
+- [ ] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
+- [ ] 02-03-PLAN.md — News sync (news_sync.py): cross-DB bridge from news_hunter/banco.db to ingestion.db with URL deduplication and B3 ticker tagging
+- [ ] 02-04-PLAN.md — Ingestion scheduler wiring: 4 job functions in scheduler.py, bind_run_id, D-15 summary logs, schedules.yaml cron entries
 
 ---
 
@@ -125,7 +126,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
-| 2. Reliable Data Ingestion | 0/4 | Not started | — |
+| 2. Reliable Data Ingestion | 0/4 | Planned | — |
 | 3. Financial Engine | 0/5 | Not started | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |
