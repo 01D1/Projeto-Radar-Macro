@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "039e1d6a9282cffa",
+    "type": "split",
+    "children": [
+      {
+        "id": "a15038e49399e559",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fbcb93e4def3203",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e516dddecd311705",
+    "type": "split",
+    "children": [
+      {
+        "id": "f55f9dc93d6976b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78ffd52b1c2dd5d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "d3cd58f18782ad36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "094b48684cbee59b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bad75df633954e58",
+    "type": "split",
+    "children": [
+      {
+        "id": "34161166d4c4d116",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6065c37c47b2b39e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "324f3f99fddd2d8b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "269e1b98ebaa0f27",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "ced7a46362ccb23a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "7be8312807c4452c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "2fbcb93e4def3203",
+  "lastOpenFiles": [
+    "CLAUDE.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/src/quant/__pycache__/technical_signals.cpython-310.pyc",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_summary_ABCB4_20260505_204943.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/modules/__pycache__/projecoes.cpython-312.pyc",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_summary_ELET3_20260505_203516.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/valuation_ELET3_preliminar_gate_20260505_203400.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/valuation_ABCB4_mfb_fallback_20260505_204830.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ABCB4_ABC_Brasil_20260505_204943.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BBDC4_Bradesco_20260505_204028.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ABCB4_ABC_Brasil_20260505_204439.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ELET3_Eletrobras_20260505_203516.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260505_204834.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260505_204342.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260505_203944.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/valuation_BBDC4_fix_dashboard_20260505_203942.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BRIT3_Brisanet_20260505_202548.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_RRRP3_Brava_Energia_20260505_194828.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BRIT3_Brisanet_20260505_194649.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_LVTC3_WDC_Networks_20260505_194742.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ABCB4_ABC_Brasil_20260505_192704.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_SANB11_Santander_Brasil_20260505_192436.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_AESB3_AES_Brasil_20260505_194207.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BPAC11_BTG_Pactual_20260505_192516.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ELET3_Eletrobras_20260505_194353.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_TRPL4_ISA_CTEEP_20260505_194451.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BRSR6_Banrisul_20260505_192624.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BBAS3_Banco_do_Brasil_20260505_170125.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ITUB4_Itaú_Unibanco_20260505_192356.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BBDC4_Bradesco_20260505_165124.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_PETR4_Petrobras_20260505_165754.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BRSR6_latest.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ABCB4_ABC_Brasil_20260505_162921.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BRSR6_Banrisul_20260505_162835.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ABCB4_latest.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_RECV3_PetroReconcavo_20260505_161725.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_PRIO3_latest.md",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/terminal.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.svg",
+    "skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg"
+  ]
+}

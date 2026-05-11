@@ -1,0 +1,218 @@
+{
+  "main": {
+    "id": "039e1d6a9282cffa",
+    "type": "split",
+    "children": [
+      {
+        "id": "a15038e49399e559",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fbcb93e4def3203",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e516dddecd311705",
+    "type": "split",
+    "children": [
+      {
+        "id": "f55f9dc93d6976b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78ffd52b1c2dd5d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "d3cd58f18782ad36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "094b48684cbee59b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bad75df633954e58",
+    "type": "split",
+    "children": [
+      {
+        "id": "34161166d4c4d116",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6065c37c47b2b39e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "324f3f99fddd2d8b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "269e1b98ebaa0f27",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "ced7a46362ccb23a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "7be8312807c4452c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "2fbcb93e4def3203",
+  "lastOpenFiles": [
+    "Analista de Investimentos/12_PYTHON/news_hunter/dados/efemerides.json",
+    "Analista de Investimentos/12_PYTHON/news_hunter/dados/dicas.json",
+    "Analista de Investimentos/12_PYTHON/news_hunter/dados/frases.json",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/crawler.cpython-310.pyc",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/telegram_client.cpython-310.pyc",
+    "Analista de Investimentos/12_PYTHON/news_hunter/agendador.py",
+    "Analista de Investimentos/12_PYTHON/news_hunter/telegram_client.py",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/classificador.cpython-310.pyc.140371802971120",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/classificador.cpython-310.pyc.127713764432880",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/gerar_boletim.cpython-310.pyc",
+    "Analista de Investimentos/12_PYTHON/news_hunter/__pycache__/gerar_boletim.cpython-310.pyc.139557145404272",
+    "Analista de Investimentos/09_SKILLS/SKILL_ANALISE_MACRO.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_LEITURA_DE_MERCADO.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_ALOCACAO_DE_CAPITAL.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_ANALISE_DE_DRIVERS_OPERACIONAIS.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_TOMADA_DE_DECISAO.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_UNIT_ECONOMICS.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_SCENARIO_ANALYSIS.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_SENSITIVITY_ANALYSIS.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_MODELO_3_STATEMENTS.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_MISPRICING_DETECTION.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_RISCO_RETORNO.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_PROJECAO_FINANCEIRA.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_LEITURA_DE_GRAFICO.md",
+    "Analista de Investimentos/09_SKILLS/SKILL_PRICE_ACTION.md",
+    "Analista de Investimentos/12_PYTHON/news_hunter/README.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/README.md",
+    "Analista de Investimentos/07_VALUATION/TELECOM/VIVT3_VIVO/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/TECNOLOGIA/_INDEX.md",
+    "Analista de Investimentos/07_VALUATION/SAUDE/HYPE3_Hyperal/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/TECNOLOGIA/LVTC3_WDC_Networks/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/TELECOM/FIQE3_Unifique/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/SAUDE/RADL3_Raia_Drogasil/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/SANEAMENTO/SAPR11_Sanepar/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/LOGISTICA/TGMA3_Tegma/_HISTORICO.md",
+    "Analista de Investimentos/07_VALUATION/LOGISTICA/SEQL3_Sequoia/_HISTORICO.md"
+  ]
+}
