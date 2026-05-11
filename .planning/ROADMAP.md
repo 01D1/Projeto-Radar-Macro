@@ -52,7 +52,7 @@ Plans:
 
 **Wave 1** *(parallel — no file overlap)*
 - [x] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
-- [ ] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
+- [x] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
 
 **Wave 2** *(blocked on Wave 1 — needs ingestion.db schema from 02-01)*
 - [ ] 02-03-PLAN.md — News sync (news_sync.py): cross-DB bridge from news_hunter/banco.db to ingestion.db with URL deduplication and B3 ticker tagging
@@ -136,7 +136,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
-| 2. Reliable Data Ingestion | 0/4 | Planned | — |
+| 2. Reliable Data Ingestion | 2/4 | Executing | — |
 | 3. Financial Engine | 0/5 | Not started | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |

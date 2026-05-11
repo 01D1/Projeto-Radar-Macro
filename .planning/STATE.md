@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 2 executing (Plan 02-01 complete)
-last_updated: "2026-05-10"
+status: Phase 2 executing (Plan 02-02 complete)
+last_updated: "2026-05-11"
 planning_complete: "2026-05-10"
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 8
-  completed_plans: 4
+  completed_plans: 5
 ---
 
 # Project State — Investment Intelligence Platform
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 ## Active Phase
 
 Phase 2: Reliable Data Ingestion
-Status: Executing (Plan 02-01 complete 2026-05-10)
-Current position: Plan 02-02 next (BCB/SGS macro series ingestion)
+Status: Executing (Plan 02-02 complete 2026-05-11)
+Current position: Plan 02-03 next (news ingestion)
 
 ---
 
@@ -47,6 +47,11 @@ Current position: Plan 02-02 next (BCB/SGS macro series ingestion)
 - 2026-05-10 [02-01]: normalized_name=None in parse_and_store() — Phase 3 enrichment via ACCOUNT_MAP deferred
 - 2026-05-10 [02-01]: extract_ipe_pdf_text() capped at 10 pages (T-02-03 mitigation)
 - 2026-05-10 [02-01]: pandas-market-calendars pinned >=4.3.0, installed as 5.3.2
+- 2026-05-11 [02-02]: BCB_SERIES dict contains exactly 5 series: selic_over(11), ipca_12m(433), ptax_usd(1), cds_brasil(29039), pib_nominal(4380)
+- 2026-05-11 [02-02]: CDS Brasil series 29039 stored in decimal not basis points — raw / 10_000 at insert time
+- 2026-05-11 [02-02]: adj_close = close column value after yfinance auto_adjust=True (no separate adj column)
+- 2026-05-11 [02-02]: Gap rows inserted with NULL OHLCV prices (is_gap=1), never interpolated
+- 2026-05-11 [02-02]: fetch_and_store() starts from MAX(date)+1day for existing tickers, DEFAULT_START only for new
 
 ---
 
@@ -65,6 +70,7 @@ Current position: Plan 02-02 next (BCB/SGS macro series ingestion)
 | 01-foundation-and-cleanup | 01 | 45min | 2 | 9 |
 | 01-foundation-and-cleanup | 02 | 60min | 2 | 9 |
 | 02-reliable-data-ingestion | 01 | 8min | 2 | 6 |
+| 02-reliable-data-ingestion | 02 | 7min | 2 | 4 |
 
 ---
 
@@ -76,4 +82,5 @@ Current position: Plan 02-02 next (BCB/SGS macro series ingestion)
 - 2026-05-10: Plan 01-03 executed. FOUND-03 (errors.py + retry jitter + IngestionError), FOUND-04 (bind_run_id), CR-04 (startup guard moved inside app()) — all closed. 15/15 tests green.
 - 2026-05-10: Phase 2 planned. 4 plans in 3 waves. Research confirmed CDS Brasil at BCB SGS series 29039; pdfplumber installed for IPE PDFs; pandas-market-calendars missing (Wave 0 task in Plan 02-01). ING-01 through ING-07 covered.
 - 2026-05-10: Plan 02-01 completed. ingestion.db schema (4 tables, TEXT UUIDs), CVM DFP/ITR/IPE pipeline, 19/19 tests green. ING-01/02/03 satisfied.
-  Last session: 2026-05-11T01:59:53Z
+- 2026-05-11: Plan 02-02 completed. BCB SGS ingestion (bcb.py, 5 series, CDS bp conversion), B3Scraper extended (write_to_db, detect_and_insert_gaps, fetch_and_store), 15/15 tests green. ING-04/05 satisfied.
+  Last session: 2026-05-11T02:11:39Z
