@@ -24,11 +24,11 @@
 
 ### FIN — Financial Engine
 
-- [ ] **FIN-01**: LTM (Last Twelve Months) financial aggregation computed for all watchlist tickers: revenue, EBITDA, net income, FCF, net debt — rolling sum of trailing 4 ITR quarters, reconciled against latest DFP
+- [x] **FIN-01**: LTM (Last Twelve Months) financial aggregation computed for all watchlist tickers: revenue, EBITDA, net income, FCF, net debt — rolling sum of trailing 4 ITR quarters, reconciled against latest DFP *(completed: 03-01, 2026-05-11)*
 - [x] **FIN-02**: Standard valuation multiples computed for each ticker: P/E, EV/EBITDA, P/BV, dividend yield, EV/Revenue; updated daily with latest price + latest LTM financials *(completed: 03-02, 2026-05-11)*
-- [ ] **FIN-03**: DCF fair value model per ticker: WACC derived from Selic + CDS Brazil + equity risk premium; FCF projections over 5 years; terminal value with configurable terminal growth rate; output includes fair value in BRL and upside/downside % vs current price
-- [ ] **FIN-04**: DCF model validates inputs before running (terminal growth < WACC; WACC > 5%); fair value outside 0.1x–5.0x current price flagged as "FORA DO INTERVALO CONFIÁVEL" rather than displayed
-- [ ] **FIN-05**: Bank/financial sector tickers routed to alternative financial model (NIM-based instead of EBITDA-based; ROE instead of ROIC; dividend discount model instead of FCF DCF)
+- [x] **FIN-03**: DCF fair value model per ticker: WACC derived from Selic + CDS Brazil + equity risk premium; FCF projections over 5 years; terminal value with configurable terminal growth rate; output includes fair value in BRL and upside/downside % vs current price *(completed: 03-03, 2026-05-11)*
+- [x] **FIN-04**: DCF model validates inputs before running (terminal growth < WACC; WACC > 5%); fair value outside 0.1x–5.0x current price flagged as "FORA DO INTERVALO CONFIÁVEL" rather than displayed *(completed: 03-03, 2026-05-11)*
+- [x] **FIN-05**: Bank/financial sector tickers routed to alternative financial model (NIM-based instead of EBITDA-based; ROE instead of ROIC; dividend discount model instead of FCF DCF) *(completed: 03-04, 2026-05-11)*
 - [x] **FIN-06**: Technical signals computed per ticker: RSI-14, MACD (12/26/9), 50-day and 200-day moving averages, MA crossover signal; composite momentum score (0–100) *(completed: 03-05, 2026-05-11)*
 
 ### INT — Intelligence Layer
