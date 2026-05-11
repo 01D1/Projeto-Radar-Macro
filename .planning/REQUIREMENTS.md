@@ -29,7 +29,7 @@
 - [ ] **FIN-03**: DCF fair value model per ticker: WACC derived from Selic + CDS Brazil + equity risk premium; FCF projections over 5 years; terminal value with configurable terminal growth rate; output includes fair value in BRL and upside/downside % vs current price
 - [ ] **FIN-04**: DCF model validates inputs before running (terminal growth < WACC; WACC > 5%); fair value outside 0.1x–5.0x current price flagged as "FORA DO INTERVALO CONFIÁVEL" rather than displayed
 - [ ] **FIN-05**: Bank/financial sector tickers routed to alternative financial model (NIM-based instead of EBITDA-based; ROE instead of ROIC; dividend discount model instead of FCF DCF)
-- [ ] **FIN-06**: Technical signals computed per ticker: RSI-14, MACD (12/26/9), 50-day and 200-day moving averages, MA crossover signal; composite momentum score (0–100)
+- [x] **FIN-06**: Technical signals computed per ticker: RSI-14, MACD (12/26/9), 50-day and 200-day moving averages, MA crossover signal; composite momentum score (0–100) *(completed: 03-05, 2026-05-11)*
 
 ### INT — Intelligence Layer
 
@@ -98,12 +98,12 @@ These are valuable but not blocking v1. Schedule for next milestone.
 | ING-05 | Phase 2 | Complete (02-02) |
 | ING-06 | Phase 2 | Complete (02-03) |
 | ING-07 | Phase 2 | Complete (02-04) |
-| FIN-01 | Phase 3 | Pending |
-| FIN-02 | Phase 3 | Pending |
-| FIN-03 | Phase 3 | Pending |
-| FIN-04 | Phase 3 | Pending |
-| FIN-05 | Phase 3 | Pending |
-| FIN-06 | Phase 3 | Pending |
+| FIN-01 | Phase 3 | Complete (03-01) |
+| FIN-02 | Phase 3 | Complete (03-02) |
+| FIN-03 | Phase 3 | Complete (03-03) |
+| FIN-04 | Phase 3 | Complete (03-03) |
+| FIN-05 | Phase 3 | Complete (03-04) |
+| FIN-06 | Phase 3 | Complete (03-05) |
 | INT-01 | Phase 4 | Pending |
 | INT-02 | Phase 4 | Pending |
 | INT-03 | Phase 4 | Pending |

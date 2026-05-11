@@ -7,7 +7,7 @@
 
 - [x] **Phase 1: Foundation & Cleanup** — Secure credentials, consolidate codebases, wire retry/logging infrastructure (completed 2026-05-10)
 - [x] **Phase 2: Reliable Data Ingestion** — All data sources (CVM, BCB, B3, news) running with retry, validation, and freshness tracking (completed 2026-05-11)
-- [ ] **Phase 3: Financial Engine** — LTM aggregation, multiples, DCF (with bank bifurcation), and technical signals computed per ticker
+- [x] **Phase 3: Financial Engine** — LTM aggregation, multiples, DCF (with bank bifurcation), and technical signals computed per ticker (completed 2026-05-11)
 - [ ] **Phase 4: Intelligence Layer** — AI investment thesis generated, validated, cost-controlled, and versioned per ticker
 - [ ] **Phase 5: Delivery Layer** — Streamlit dashboard, Telegram alerts, and PDF reports operational end-to-end
 
@@ -93,7 +93,7 @@ Plans:
 - [x] 03-03-PLAN.md — DCF engine: compute_wacc() (live Selic+CDS from macro_series), _validate_dcf_inputs() (T-DCF-01 guard), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple paths)
 
 **Wave 3** *(blocked on all prior waves — signals + scheduler wiring)*
-- [ ] 03-05-PLAN.md — Technical signals (RSI-14, MACD 12/26/9, MA50/200, momentum score 0-100) + job_financial_engine() scheduler wiring + schedules.yaml cron entry
+- [x] 03-05-PLAN.md — Technical signals (RSI-14, MACD 12/26/9, MA50/200, momentum score 0-100) + job_financial_engine() scheduler wiring + schedules.yaml cron entry
 
 **Cross-cutting constraints:**
 - All SQL uses parameterized queries — never f-string with ticker (T-DCF-02)
@@ -151,7 +151,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
 | 2. Reliable Data Ingestion | 4/4 | Complete | 2026-05-11 |
-| 3. Financial Engine | 4/5 | In progress | — |
+| 3. Financial Engine | 5/5 | Complete | 2026-05-11 |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |
 

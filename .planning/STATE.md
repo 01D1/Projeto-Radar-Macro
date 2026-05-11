@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 3 in progress — executing
+status: Phase 3 complete — ready for Phase 4
 last_updated: "2026-05-11"
 planning_complete: "2026-05-11"
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 13
-  completed_plans: 10
+  completed_plans: 11
 ---
 
 # Project State — Investment Intelligence Platform
@@ -19,7 +19,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-05-06)
 
 **Core value:** AI-powered investment decision engine — tells clients what to do and why, not just what's happening
-**Current focus:** Phase 3 — Plan 01 complete, executing plans 02-05
+**Current focus:** Phase 4 — Intelligence Layer (next phase)
 
 ---
 
@@ -28,9 +28,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
 Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
 
-Phase 3: Financial Engine — IN PROGRESS (2026-05-11)
-Status: Plans 01-02-03-04 complete; 86/86 tests green; FIN-01 partial, FIN-02 closed, FIN-03 closed, FIN-04 closed, FIN-05 closed, BUG-01/GAP-02/D-01/D-06 closed
-Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
+Phase 3: Financial Engine — COMPLETE (2026-05-11)
+Status: All 5 plans executed; 93/93 tests green; FIN-01..06 closed, D-03/D-12 closed, BUG-01/GAP-02/D-01/D-06 closed
+Current position: Phase 3 complete — all financial_* tables populated, job_financial_engine() scheduled at 20:00 Mon-Fri
 
 ---
 
@@ -82,6 +82,10 @@ Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
 - 2026-05-11 [03-03]: _is_stale_date() existente reutilizado como verificador de staleness de macro — evita duplicata _is_macro_stale()
 - 2026-05-11 [03-03]: DCFAssumptions fields (risk_free_rate, equity_risk_premium, pre_tax_cost_of_debt) diferem das chaves sectors.yaml (risk_free, erp, cost_of_debt) — mapeamento explícito em _compute_dcf_industrial()
 - 2026-05-11 [03-03]: Live WACC override: risk_free_rate = ke_live - beta*erp garante DCFAssumptions.wacc == compute_wacc() result (D-09)
+- 2026-05-11 [03-05]: compute_signals() aceita pd.Series com índice de strings de data — sem necessidade de pd.DatetimeIndex para EWM/rolling
+- 2026-05-11 [03-05]: ma_50=None quando n<50, ma_200=None quando n<200; cross_score=10 (neutro) quando MA200 não disponível — preserva momentum_score % 10 == 0
+- 2026-05-11 [03-05]: job_financial_engine() usa lazy imports dentro da função — padrão consistente com todos os outros scheduler jobs
+- 2026-05-11 [03-05]: Cron 0 20 * * 1-5 para financial_engine — executa após cvm_ingest (19:15) e b3_prices (19:00) garantindo dados frescos
 
 ---
 
@@ -91,6 +95,7 @@ Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
 |-------|-----------|-------|-------|
 | 01-foundation-and-cleanup | 2026-05-10 | 3/3 | 15/15 tests green; FOUND-01/02/03/04 closed |
 | 02-reliable-data-ingestion | 2026-05-11 | 4/4 | 65/65 tests green; ING-01 through ING-07 closed |
+| 03-financial-engine | 2026-05-11 | 5/5 | 93/93 tests green; FIN-01..06 closed, D-03/D-12 closed |
 
 ---
 
@@ -108,6 +113,7 @@ Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
 | 03-financial-engine | 02 | 12min | 2 | 2 |
 | 03-financial-engine | 04 | 15min | 2 | 2 |
 | 03-financial-engine | 03 | 18min | 2 | 2 |
+| 03-financial-engine | 05 | 20min | 2 | 5 |
 
 ---
 
@@ -127,4 +133,5 @@ Current position: Plan 05 next (Signals + scheduler wiring — Wave 3)
 - 2026-05-11: Plan 03-02 completed. FIN-02 (multiples computation) — _get_current_price(), _compute_multiples() implementados, run_ticker() wired, 3 FIN-02 tests. 77/77 tests green.
 - 2026-05-11: Plan 03-04 completed. FIN-05 (bank DDM model) — _write_dcf_row(), _compute_bank_model() implementados, is_bank_model routing guard em run_ticker(), 4 FIN-05 tests. 81/81 tests green.
 - 2026-05-11: Plan 03-03 completed. FIN-03 (compute_wacc real) + FIN-04 (input validation) — compute_wacc() de macro_series, _validate_dcf_inputs(), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple), 5 FIN-03/FIN-04 tests. 86/86 tests green.
-  Last session: 2026-05-11T19:28:00Z
+- 2026-05-11: Plan 03-05 completed. FIN-06 (technical signals) + D-03/D-12 (scheduler wiring) — compute_signals() RSI-14/MACD/MA/momentum, _compute_and_write_signals() em run_ticker(), job_financial_engine() em _JOB_REGISTRY + schedules.yaml (20:00 Mon-Fri), 7 novos testes. 93/93 tests green. Phase 3 COMPLETE.
+  Last session: 2026-05-11T18:57:55Z
