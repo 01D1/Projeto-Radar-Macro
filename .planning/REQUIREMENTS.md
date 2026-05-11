@@ -20,7 +20,7 @@
 - [x] **ING-04**: BCB macro series (Selic, IPCA, PTAX, CDS Brazil, PIB) ingested via BCB SGS API with freshness timestamps; data freshness displayed in UI *(completed: 02-02, 2026-05-11)*
 - [x] **ING-05**: B3 price series (OHLCV + adjusted close) ingested via yfinance for watchlist tickers; corporate actions adjusted; gaps flagged rather than interpolated *(completed: 02-02, 2026-05-11)*
 - [x] **ING-06**: News RSS feeds (17+ sources) ingested on schedule; articles deduplicated by URL; each item tagged with relevant ticker from watchlist when detectable *(completed: 02-03, 2026-05-10)*
-- [ ] **ING-07**: Ingestion scheduler runs daily (configurable time via `.env`); each run logged with duration, records updated, and any failures
+- [x] **ING-07**: Ingestion scheduler runs daily (configurable time via `.env`); each run logged with duration, records updated, and any failures *(completed: 02-04, 2026-05-11)*
 
 ### FIN — Financial Engine
 
@@ -97,7 +97,7 @@ These are valuable but not blocking v1. Schedule for next milestone.
 | ING-04 | Phase 2 | Complete (02-02) |
 | ING-05 | Phase 2 | Complete (02-02) |
 | ING-06 | Phase 2 | Complete (02-03) |
-| ING-07 | Phase 2 | Pending |
+| ING-07 | Phase 2 | Complete (02-04) |
 | FIN-01 | Phase 3 | Pending |
 | FIN-02 | Phase 3 | Pending |
 | FIN-03 | Phase 3 | Pending |

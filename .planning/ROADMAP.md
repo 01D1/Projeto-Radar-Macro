@@ -6,7 +6,7 @@
 ## Phases
 
 - [x] **Phase 1: Foundation & Cleanup** — Secure credentials, consolidate codebases, wire retry/logging infrastructure (completed 2026-05-10)
-- [ ] **Phase 2: Reliable Data Ingestion** — All data sources (CVM, BCB, B3, news) running with retry, validation, and freshness tracking
+- [x] **Phase 2: Reliable Data Ingestion** — All data sources (CVM, BCB, B3, news) running with retry, validation, and freshness tracking (completed 2026-05-11)
 - [ ] **Phase 3: Financial Engine** — LTM aggregation, multiples, DCF (with bank bifurcation), and technical signals computed per ticker
 - [ ] **Phase 4: Intelligence Layer** — AI investment thesis generated, validated, cost-controlled, and versioned per ticker
 - [ ] **Phase 5: Delivery Layer** — Streamlit dashboard, Telegram alerts, and PDF reports operational end-to-end
@@ -58,7 +58,7 @@ Plans:
 - [x] 02-03-PLAN.md — News sync (news_sync.py): cross-DB bridge from news_hunter/banco.db to ingestion.db with URL deduplication and B3 ticker tagging
 
 **Wave 3** *(blocked on Wave 2 — wires all three modules into scheduler)*
-- [ ] 02-04-PLAN.md — Ingestion scheduler wiring: 4 job functions in scheduler.py, bind_run_id, D-15 summary logs, schedules.yaml cron entries
+- [x] 02-04-PLAN.md — Ingestion scheduler wiring: 4 job functions in scheduler.py, bind_run_id, D-15 summary logs, schedules.yaml cron entries
 
 **Cross-cutting constraints:**
 - @retry(attempts=3, delay=2.0, backoff=2.0, jitter=0.5) on every external API call (all plans)
@@ -136,7 +136,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
-| 2. Reliable Data Ingestion | 3/4 | Executing | — |
+| 2. Reliable Data Ingestion | 4/4 | Complete | 2026-05-11 |
 | 3. Financial Engine | 0/5 | Not started | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |

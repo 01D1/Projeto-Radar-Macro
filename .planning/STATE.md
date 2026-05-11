@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 2 executing (Plan 02-03 complete)
-last_updated: "2026-05-10"
+status: Phase 2 complete (all 4 plans done)
+last_updated: "2026-05-11"
 planning_complete: "2026-05-10"
 progress:
   total_phases: 5
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 8
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State — Investment Intelligence Platform
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-05-06)
 
 ## Active Phase
 
-Phase 2: Reliable Data Ingestion
-Status: Executing (Plan 02-03 complete 2026-05-10)
-Current position: Plan 02-04 next (scheduler/orchestration)
+Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
+Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
+Current position: Phase 3 next (Financial Engine)
 
 ---
 
@@ -56,6 +56,11 @@ Current position: Plan 02-04 next (scheduler/orchestration)
 - 2026-05-10 [02-03]: SELECT changes() per-row after INSERT OR IGNORE to count actual new inserts (not attempted rows)
 - 2026-05-10 [02-03]: ticker_tags stores categoria as JSON list only when B3 regex matches; NULL otherwise (Phase 4 enrichment deferred)
 - 2026-05-10 [02-03]: banco_db_path as explicit parameter (default BANCO_DB) enables clean test isolation with tmp_path
+- 2026-05-11 [02-04]: bind_run_id("ingest") prefix used in all 4 new jobs — consistent run_id prefix for ingestion traceability
+- 2026-05-11 [02-04]: b3_prices cron updated from 07:00 to 19:00 (post-B3-close) matching cvm_ingest window
+- 2026-05-11 [02-04]: job_news_ingest uses subprocess.run list form — [sys.executable, main.py, --coletar], cwd=news_hunter, timeout=300
+- 2026-05-11 [02-04]: Test pattern: sys.modules["config.settings"] for Pydantic Settings patch (not config.settings.settings)
+- 2026-05-11 [02-04]: Test pattern: patch get_logger at source for D-15 log capture (jobs use internal _log not module-level log)
 
 ---
 
@@ -64,6 +69,7 @@ Current position: Plan 02-04 next (scheduler/orchestration)
 | Phase | Completed | Plans | Notes |
 |-------|-----------|-------|-------|
 | 01-foundation-and-cleanup | 2026-05-10 | 3/3 | 15/15 tests green; FOUND-01/02/03/04 closed |
+| 02-reliable-data-ingestion | 2026-05-11 | 4/4 | 65/65 tests green; ING-01 through ING-07 closed |
 
 ---
 
@@ -76,6 +82,7 @@ Current position: Plan 02-04 next (scheduler/orchestration)
 | 02-reliable-data-ingestion | 01 | 8min | 2 | 6 |
 | 02-reliable-data-ingestion | 02 | 7min | 2 | 4 |
 | 02-reliable-data-ingestion | 03 | 3min | 1 | 2 |
+| 02-reliable-data-ingestion | 04 | 8min | 2 | 3 |
 
 ---
 
@@ -89,4 +96,5 @@ Current position: Plan 02-04 next (scheduler/orchestration)
 - 2026-05-10: Plan 02-01 completed. ingestion.db schema (4 tables, TEXT UUIDs), CVM DFP/ITR/IPE pipeline, 19/19 tests green. ING-01/02/03 satisfied.
 - 2026-05-11: Plan 02-02 completed. BCB SGS ingestion (bcb.py, 5 series, CDS bp conversion), B3Scraper extended (write_to_db, detect_and_insert_gaps, fetch_and_store), 15/15 tests green. ING-04/05 satisfied.
 - 2026-05-10: Plan 02-03 completed. news_sync.py cross-DB bridge (banco.db → news_articles), INSERT OR IGNORE URL dedup, B3 ticker regex tagging, 9/9 tests green. ING-06 satisfied.
-  Last session: 2026-05-10T18:00:00Z
+- 2026-05-11: Plan 02-04 completed. 4 ingestion jobs wired into scheduler (_JOB_REGISTRY), schedules.yaml updated with 4 cron entries, 65/65 tests green. ING-07 satisfied. Phase 2 complete.
+  Last session: 2026-05-11T02:33:00Z
