@@ -29,8 +29,8 @@ Phase 2: Reliable Data Ingestion — COMPLETE (2026-05-11)
 Status: All 4 plans executed; 65/65 tests green; ING-01 through ING-07 satisfied
 
 Phase 3: Financial Engine — IN PROGRESS (2026-05-11)
-Status: Plans 01-02 complete; 77/77 tests green; FIN-01 partial, FIN-02 closed, BUG-01/GAP-02/D-01/D-06 closed
-Current position: Plan 03 next (DCF engine)
+Status: Plans 01-02-04 complete; 81/81 tests green; FIN-01 partial, FIN-02 closed, FIN-05 closed, BUG-01/GAP-02/D-01/D-06 closed
+Current position: Plan 03 next (DCF engine — Wave 2)
 
 ---
 
@@ -73,6 +73,11 @@ Current position: Plan 03 next (DCF engine)
 - 2026-05-11 [03-02]: ev_revenue ausente de IndustrialMetrics — computado inline: (market_cap + net_debt) / net_revenue
 - 2026-05-11 [03-02]: market_cap = price × shares_outstanding no orchestrator — nenhuma função de métricas o retorna diretamente
 - 2026-05-11 [03-02]: compute_wacc() stub retorna fallback (0.12, 0.105, 0.015, True) em vez de NotImplementedError — mantém run_ticker() funcional antes do Plan 03-03
+- 2026-05-11 [03-04]: run_ddm() assinatura real usa cost_of_equity/terminal_growth_rate/income_growth_rates (não coe/g/growth_rates) — adaptado sem alterar valuation_dcf.py (D-11)
+- 2026-05-11 [03-04]: DDMResult não tem price_target — usa equity_value_per_share quando shares>0, fallback equity_value/shares
+- 2026-05-11 [03-04]: gordon_assumptions para bancos tem apenas coe/terminal_growth/payout_ratio — ke lido diretamente de gordon_assumptions.coe (0.135)
+- 2026-05-11 [03-04]: _write_dcf_row() implementado em Plan 03-04 (Plan 03-03 ainda não executado) — helper compartilhado para DDM e DCF industrial
+- 2026-05-11 [03-04]: BankMetricsCalc tem nii_margin (não nim) — campo é NIM proxy (NII / Total Assets)
 
 ---
 
@@ -97,6 +102,7 @@ Current position: Plan 03 next (DCF engine)
 | 02-reliable-data-ingestion | 04 | 8min | 2 | 3 |
 | 03-financial-engine | 01 | 8min | 2 | 7 |
 | 03-financial-engine | 02 | 12min | 2 | 2 |
+| 03-financial-engine | 04 | 15min | 2 | 2 |
 
 ---
 
@@ -114,4 +120,5 @@ Current position: Plan 03 next (DCF engine)
 - 2026-05-11: Phase 3 context gathered via /gsd-discuss-phase 3. Resume file: .planning/phases/03-financial-engine/03-CONTEXT.md
 - 2026-05-11: Plan 03-01 completed. BUG-01 (encoding), GAP-02 (import), D-01 (schema), D-06 (AccountMapper wire-up), FIN-01 partial (LTM). 74/74 tests green.
 - 2026-05-11: Plan 03-02 completed. FIN-02 (multiples computation) — _get_current_price(), _compute_multiples() implementados, run_ticker() wired, 3 FIN-02 tests. 77/77 tests green.
-  Last session: 2026-05-11T18:42:00Z
+- 2026-05-11: Plan 03-04 completed. FIN-05 (bank DDM model) — _write_dcf_row(), _compute_bank_model() implementados, is_bank_model routing guard em run_ticker(), 4 FIN-05 tests. 81/81 tests green.
+  Last session: 2026-05-11T19:05:00Z

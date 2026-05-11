@@ -87,7 +87,7 @@ Plans:
 
 **Wave 1** *(parallel — no file overlap between 03-02 and 03-04)*
 - [x] 03-02-PLAN.md — Multiples computation: _get_current_price(), _compute_multiples(), industrial + bank routing, missing-price flagging
-- [ ] 03-04-PLAN.md — Bank financial model: _compute_bank_model(), run_ddm() wire-up, bank LTM via BankAccountMapper, EBITDA=NULL for banks
+- [x] 03-04-PLAN.md — Bank financial model: _compute_bank_model(), run_ddm() wire-up, bank LTM via BankAccountMapper, EBITDA=NULL for banks
 
 **Wave 2** *(blocked on Wave 0 and Wave 1 — reads from financial_ltm)*
 - [ ] 03-03-PLAN.md — DCF engine: compute_wacc() (live Selic+CDS from macro_series), _validate_dcf_inputs() (T-DCF-01 guard), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple paths)
@@ -151,7 +151,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
 | 2. Reliable Data Ingestion | 4/4 | Complete | 2026-05-11 |
-| 3. Financial Engine | 2/5 | In progress | — |
+| 3. Financial Engine | 3/5 | In progress | — |
 | 4. Intelligence Layer | 0/5 | Not started | — |
 | 5. Delivery Layer | 0/4 | Not started | — |
 
