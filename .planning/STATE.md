@@ -2,7 +2,7 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: Phase 3 complete — ready for Phase 4
+status: Phase 4 context gathered — ready for planning
 last_updated: "2026-05-11"
 planning_complete: "2026-05-11"
 progress:
@@ -129,6 +129,7 @@ Current position: Phase 3 complete — all financial_* tables populated, job_fin
 - 2026-05-10: Plan 02-03 completed. news_sync.py cross-DB bridge (banco.db → news_articles), INSERT OR IGNORE URL dedup, B3 ticker regex tagging, 9/9 tests green. ING-06 satisfied.
 - 2026-05-11: Plan 02-04 completed. 4 ingestion jobs wired into scheduler (_JOB_REGISTRY), schedules.yaml updated with 4 cron entries, 65/65 tests green. ING-07 satisfied. Phase 2 complete.
 - 2026-05-11: Phase 3 context gathered via /gsd-discuss-phase 3. Resume file: .planning/phases/03-financial-engine/03-CONTEXT.md
+- 2026-05-11: Phase 4 context gathered via /gsd-discuss-phase 4. Resume file: .planning/phases/04-intelligence-layer/04-CONTEXT.md
 - 2026-05-11: Plan 03-01 completed. BUG-01 (encoding), GAP-02 (import), D-01 (schema), D-06 (AccountMapper wire-up), FIN-01 partial (LTM). 74/74 tests green.
 - 2026-05-11: Plan 03-02 completed. FIN-02 (multiples computation) — _get_current_price(), _compute_multiples() implementados, run_ticker() wired, 3 FIN-02 tests. 77/77 tests green.
 - 2026-05-11: Plan 03-04 completed. FIN-05 (bank DDM model) — _write_dcf_row(), _compute_bank_model() implementados, is_bank_model routing guard em run_ticker(), 4 FIN-05 tests. 81/81 tests green.
