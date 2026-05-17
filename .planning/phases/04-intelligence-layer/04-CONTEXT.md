@@ -214,7 +214,51 @@ The phase does NOT change how data is ingested or computed — it purely consume
 
 </deferred>
 
+
+
 ---
 
 *Phase: 4-Intelligence Layer*
 *Context gathered: 2026-05-11*
+
+## Avaliação rápida do contexto (resumido)
+
+Ponto forte: plano bem estruturado, com decisões claras (schema Pydantic, hash-gate, versionamento, regras de sinal) e integração definida com DB e scheduler — dá boa rastreabilidade e auditabilidade.
+
+## Pontos de atenção / riscos
+- Consistência de floats e serialização (D-09): diferenças de rounding podem gerar hashes diferentes; exigir normalização explícita (2 casas, salvar como string no hash).
+- Dependência instructor/anthropic ainda não no pyproject (Canonical refs): bloqueador para CI/CD; validar versão compatível antes de merge.
+- Falha dura em validação (D-05): correto, mas exigir plano de observabilidade (logs + métricas) para evitar perda de cobertura ao falhar em massa.
+- Rate-limits & custos (D-04/D-09): revisão de retry/backoff e quota por ticker + global budget.
+- DCF injection (D-03): cuidado com formatos monetários/locale na prompt (ex.: R$ 1.234,56 vs 1234.56) — normalize para en-US numeric string no payload.
+
+## Recomendações práticas (priorizadas)
+1. Implementar utilitário compartilhado: normalize_for_hash(obj, float_decimals=2) — aplicar antes de SHA256 (evita flakiness).
+2. Adicionar testes unitários:
+  - geração de hash idempotente com diferentes float precisions;
+  - fluxo happy/fail do IntelligenceClient com mock `instructor` (incluindo validação fail → IngestionError).
+3. Criar migration SQL + teste de integração para `thesis_versions` e `opportunity_signals`.
+4. Cobrir edge-cases de DCF deviation: workflow para >10% (marcar flag, enviar alerta por log/telemetry).
+5. Instrumentação mínima: contador de chamadas LLM por ticker, tempo médio, % de validação-failures, custo estimado (localmente calculado por token).
+6. Prompt testing: colar exemplos de payload DCF+multiples+news num conjunto de fixtures e registrar respostas esperadas (incluindo caso que ignora fair_value_brl).
+
+## Checklist de aceitação sugerido
+- [ ] Prompt template em src/templates/thesis_prompt.j2 com placeholders validados.
+- [ ] IntelligenceClient implementado com retry e testes de mock.
+- [ ] Hash-gating funcional: mesma hash → skip; diferente → gerar; cap diário aplicado.
+- [ ] Thesis armazenada em thesis_versions com version_num auto-incrementado por ticker e diff_summary calculado.
+- [ ] Computação de opportunity_signals executa e grava top-3 por dia.
+- [ ] job_intelligence adicionado ao scheduler e cron testado localmente.
+- [ ] pyproject atualizado e build CI passando (inclui instructor).
+
+## Pequenas sugestões de melhoria textual no prompt
+- Forçar formato numérico: "fair_value_brl: 1234.56 (usar ponto como separador decimal)"
+- Incluir instrução clara de idiomas: "Responda em Português. Campos estruturados apenas em JSON compatível com o esquema Pydantic."
+- Pedir explicitamente: "Não adicione campos extras; responda apenas o objeto InvestmentThesis."
+
+## Próximos passos imediatos
+- Escolher versão do pacote `instructor` compatível e atualizar pyproject.
+- Implementar utilitário de normalização + testes de hash.
+- Criar fixtures de prompt/resposta para testes de integração with mocked instructor.
+
+Conclusão: estrutura sólida e bem pensada. Focar em determinismo (hash/serialização), observabilidade (falhas de validação) e controls de custo antes do rollout.

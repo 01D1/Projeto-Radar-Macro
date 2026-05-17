@@ -1,0 +1,9 @@
+{"id":"e7144bce-8f87-4b71-8bc7-a59e33983c98","ts":"2026-05-11T00:12:14.792Z","severity":"warning","message":"External state migration warning: Migration rename/copy failed: EPERM, Permission denied: \\\\?\\C:\\Users\\55819\\OneDrive - EPEJUD\\DIEGO\\OBSIDIAN\\.gsd '\\\\?\\C:\\Users\\55819\\OneDrive - EPEJUD\\DIEGO\\OBSIDIAN\\.gsd'","source":"notify","read":false}
+{"id":"3b555d15-bae6-4fe6-9d87-d533425ed574","ts":"2026-05-11T00:15:51.767Z","severity":"info","message":"Analyzing codebase...","source":"notify","read":false}
+{"id":"c2872441-1723-49c2-bb08-cd04b222c811","ts":"2026-05-11T00:15:52.039Z","severity":"success","message":"✓ Analyzed codebase","source":"notify","read":false}
+{"id":"4ec4ab0b-8563-467e-946e-c1a89028918f","ts":"2026-05-11T00:15:52.041Z","severity":"info","message":"Reviewing prior context...","source":"notify","read":false}
+{"id":"e9d8e241-7d2e-4a32-bc0a-261fc7fa57a0","ts":"2026-05-11T00:15:52.044Z","severity":"success","message":"✓ Reviewed prior context","source":"notify","read":false}
+{"id":"e1d60e2e-0744-4807-91ca-1281bd5da267","ts":"2026-05-11T03:24:21.306Z","severity":"info","message":"Analyzing codebase...","source":"notify","read":false}
+{"id":"4f358176-ddef-4ecd-82ea-8f2e0970f3b4","ts":"2026-05-11T03:24:21.529Z","severity":"success","message":"✓ Analyzed codebase","source":"notify","read":false}
+{"id":"54356849-f611-4b6e-916a-8f64289a4c9b","ts":"2026-05-11T03:24:21.538Z","severity":"info","message":"Reviewing prior context...","source":"notify","read":false}
+{"id":"a1a87c43-ad63-4343-ac90-3e010949114e","ts":"2026-05-11T03:24:21.544Z","severity":"success","message":"✓ Reviewed prior context","source":"notify","read":false}
