@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "039e1d6a9282cffa",
+    "type": "split",
+    "children": [
+      {
+        "id": "a15038e49399e559",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fbcb93e4def3203",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e516dddecd311705",
+    "type": "split",
+    "children": [
+      {
+        "id": "f55f9dc93d6976b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78ffd52b1c2dd5d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "d3cd58f18782ad36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "094b48684cbee59b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bad75df633954e58",
+    "type": "split",
+    "children": [
+      {
+        "id": "34161166d4c4d116",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6065c37c47b2b39e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "324f3f99fddd2d8b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "269e1b98ebaa0f27",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "ced7a46362ccb23a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "7be8312807c4452c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "2fbcb93e4def3203",
+  "lastOpenFiles": [
+    "Analista de Investimentos/scanner_quant_profit_b3",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_index.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_summary_latest.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_summary_BBDC4_20260502_114017.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/Valuation_BBDC4_Bradesco_test_summary2.xlsx",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260502_114016.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries/run_summary_BBDC4_20260502_113510.json",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/run_summaries",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/Valuation_BBDC4_Bradesco_test_summary.xlsx",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260502_113510.log",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/logs/pipeline_20260502_113504.log",
+    "Analista de Investimentos/12_PYTHON/news_hunter/boletins/boletim_2026-04-30.md",
+    "Analista de Investimentos/12_PYTHON/news_hunter/boletins/boletim_2026-04-29.md",
+    "Analista de Investimentos/12_PYTHON/news_hunter/boletins/boletim_2026-04-28.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@types/ws/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@vitest/mocker/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@vitest/runner/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@vitest/expect/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@vitest/spy/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@vitest/snapshot/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@types/estree/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@img/sharp-linux-x64/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@types/deep-eql/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@img/sharp-linuxmusl-x64/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@anthropic-ai/claude-agent-sdk/LICENSE.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@rollup/rollup-linux-x64-gnu/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@anthropic-ai/claude-agent-sdk/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@types/chai/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@rollup/rollup-linux-x64-musl/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@esbuild/linux-x64/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@types/node/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/@jridgewell/sourcemap-codec/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/source-map-js/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/tinyspy/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/zod/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/sdk/node_modules/tinybench/README.md",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/terminal.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.svg",
+    "skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg"
+  ]
+}

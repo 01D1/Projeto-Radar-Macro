@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python notebooks/01_wege3_extracao_piloto.py)",
+      "Bash(set PYTHONIOENCODING=utf-8)",
+      "Bash(python -c ' *)",
+      "Bash(python -X utf8 notebooks/01_wege3_extracao_piloto.py)",
+      "Bash(python -X utf8 -c ' *)",
+      "Bash(python -X utf8 notebooks/02_wege3_historico_completo.py)",
+      "Bash(python *)"
+    ]
+  }
+}

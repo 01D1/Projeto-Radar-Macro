@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-05-10T19:09:15-03:00",
+  "phase": "1",
+  "phase_name": "Foundation & Cleanup",
+  "phase_dir": ".planning/phases/01-foundation-and-cleanup",
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "gaps_found",
+  "completed_tasks": [
+    {"id": "01-01", "name": "Codebase consolidation + test bootstrap", "status": "done", "commit": "4e22978"},
+    {"id": "01-02", "name": "Credentials & config migration", "status": "done", "commit": "c110096"}
+  ],
+  "remaining_tasks": [
+    {"id": "01-03", "name": "Retry & logging infrastructure (FOUND-03, FOUND-04)", "status": "not_started", "note": "Plan never created — gsd-planner was interrupted"},
+    {"id": "CR-04-fix", "name": "Move startup guard from module scope to app() in src/main.py", "status": "not_started", "note": "Bug found by code review — kills pytest if ENV=production"}
+  ],
+  "blockers": [
+    {
+      "description": "src/utils/errors.py does not exist — ModuleNotFoundError blocks entire test_retry.py",
+      "type": "technical",
+      "workaround": "Create via gap closure plan 01-03"
+    },
+    {
+      "description": "retry() decorator missing jitter param and IngestionError elevation",
+      "type": "technical",
+      "workaround": "Extend src/utils/retry.py in gap closure plan 01-03"
+    },
+    {
+      "description": "bind_run_id not exported from src/utils/logger.py",
+      "type": "technical",
+      "workaround": "Add to src/utils/logger.py in gap closure plan 01-03"
+    },
+    {
+      "description": "Startup guard in src/main.py lines 26-33 runs at module level — sys.exit(1) kills pytest when ENV=production",
+      "type": "technical",
+      "workaround": "Move guard inside app() function — gap closure plan"
+    }
+  ],
+  "human_actions_pending": [],
+  "decisions": [
+    {"decision": "Venv recreated at OBSIDIAN root (.venv/) for Windows Python 3.10.11", "rationale": "Stale macOS 3.9 artifact was incompatible with Windows", "phase": "1"},
+    {"decision": "pyproject.toml requires-python lowered to >=3.10", "rationale": "Python 3.11 not installed, 3.10.11 available", "phase": "1"},
+    {"decision": "hatchling build config added with packages=[src, config, news_hunter]", "rationale": "Editable install (-e) requires explicit package list", "phase": "1"},
+    {"decision": "pyyaml added as explicit dependency", "rationale": "Was implicit but missing from pyproject.toml", "phase": "1"},
+    {"decision": "IsolatedSettings pattern for test_settings.py", "rationale": "Avoids env_ignore_empty=True interference from real .env file during tests", "phase": "1"},
+    {"decision": "patch dotenv.load_dotenv in test_news_hunter_config.py", "rationale": "Prevents .env loading during unit tests that test empty fallback behavior", "phase": "1"},
+    {"decision": "Sequential executor (no worktrees)", "rationale": "OneDrive cloud sync makes git worktrees unreliable on this machine", "phase": "1"}
+  ],
+  "uncommitted_files": [
+    ".planning/phases/01-foundation-and-cleanup/01-VERIFICATION.md",
+    ".planning/phases/01-foundation-and-cleanup/01-01-PLAN.md",
+    ".planning/phases/01-foundation-and-cleanup/01-02-PLAN.md",
+    ".planning/phases/01-foundation-and-cleanup/01-CONTEXT.md",
+    ".planning/phases/01-foundation-and-cleanup/01-DISCUSSION-LOG.md",
+    ".planning/phases/01-foundation-and-cleanup/01-PATTERNS.md",
+    ".planning/phases/01-foundation-and-cleanup/01-RESEARCH.md",
+    ".planning/phases/01-foundation-and-cleanup/01-VALIDATION.md"
+  ],
+  "next_action": "Run /gsd-plan-phase 1 --gaps to create gap closure plans for FOUND-03, FOUND-04, and CR-04 fix",
+  "context_notes": "Phase 1 executed 2/3 plans successfully. The gsd-planner was interrupted before creating plan 01-03 (retry & logging). Verifier confirmed FOUND-01 and FOUND-02 satisfied; FOUND-03 and FOUND-04 are unimplemented. Tests: 10 passed, 5 failed (all RED expected for missing retry/logger features). Code review found CR-04 (module-level sys.exit) as a real bug to fix."
+}

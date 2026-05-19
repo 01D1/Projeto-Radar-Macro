@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "039e1d6a9282cffa",
+    "type": "split",
+    "children": [
+      {
+        "id": "a15038e49399e559",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2fbcb93e4def3203",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e516dddecd311705",
+    "type": "split",
+    "children": [
+      {
+        "id": "f55f9dc93d6976b6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "78ffd52b1c2dd5d8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "d3cd58f18782ad36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "094b48684cbee59b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bad75df633954e58",
+    "type": "split",
+    "children": [
+      {
+        "id": "34161166d4c4d116",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6065c37c47b2b39e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "324f3f99fddd2d8b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "269e1b98ebaa0f27",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "ced7a46362ccb23a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "7be8312807c4452c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "2fbcb93e4def3203",
+  "lastOpenFiles": [
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/data/qualitative/raw/WEGE3/59f8088da9d3235a_59f8088da9d3235a_59f8088da9d3235a_59f8088da9d3235a_59f8088da9d3235a_59f8088da9d3235a_59f8088da9d3235a_01_2025-11-28_Assembleia_Geral_Extraordinária.txt",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/data/qualitative/raw/BBAS3/cf99af51e2e8d24f_cf99af51e2e8d24f_cf99af51e2e8d24f_cf99af51e2e8d24f_cf99af51e2e8d24f_cf99af51e2e8d24f_03_2026-02-11_Projeções_2026.txt",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/data/qualitative/raw/BBAS3/cd47742dc10a889b_cd47742dc10a889b_cd47742dc10a889b_cd47742dc10a889b_cd47742dc10a889b_cd47742dc10a889b_13_2025-05-15_Projeção_1T25.txt",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/data/qualitative/raw/BBAS3/c3c8a7f37e3cba67_c3c8a7f37e3cba67_c3c8a7f37e3cba67_c3c8a7f37e3cba67_c3c8a7f37e3cba67_c3c8a7f37e3cba67_18_2025-02-19_Payout_2025_e_datas_de_pagamento.txt",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/data/qualitative/raw/BBAS3/286b3cb4ced8d246_286b3cb4ced8d246_286b3cb4ced8d246_286b3cb4ced8d246_286b3cb4ced8d246_286b3cb4ced8d246_07_2025-11-12_Projeções_2025_-_revisadas.txt",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_report_20260518_212519.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_variants_20260518_212519.csv",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_report_20260518_211635.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_variants_20260518_211635.csv",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_report_20260518_211235.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_reduction_variants_20260518_211235.csv",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_VARIANTES_SAIDA.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_VARIANTES_REBALANCE.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_REDUCAO_CUSTOS.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/tests/__pycache__/test_cost_reduction_report.cpython-310-pytest-9.0.3.pyc",
+    "Analista de Investimentos/scanner_quant_profit_b3/src/reports/__pycache__/cost_reduction_report.cpython-310.pyc",
+    "Analista de Investimentos/scanner_quant_profit_b3/src/scanners/__pycache__/cost_reduction_simulation.cpython-310.pyc",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/fine_cost_diagnostics_report_20260518_204940.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_DIAGNOSTICO_FINO_CUSTOS.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_EXIT_RULE_COSTS.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_REBALANCE_COSTS.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_METADATA_ORDENS.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/data_quality/audit_BBDC4_20260518.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_SUZB3_Suzano_20260518_202608.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_PETR4_Petrobras_20260518_202204.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_WEGE3_WEG_20260518_201620.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/pre_valuation_quality/pre_valuation_quality_VALE3.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_SANB11_Santander_Brasil_20260518_200956.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BBAS3_Banco_do_Brasil_20260518_200241.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_ITUB4_Itaú_Unibanco_20260518_200606.md",
+    "Analista de Investimentos/12_PYTHON/pipeline banco completo/outputs/reports/Tese_BBDC4_Bradesco_20260518_195801.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/cost_slippage_diagnostics_report_20260518_182948.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_BREAKEVEN_CUSTO.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_TURNOVER.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/docs/PAPER_TRADING_DIAGNOSTICO_CUSTOS.md",
+    "Analista de Investimentos/scanner_quant_profit_b3/data/reports/limit_signal_source_report_20260518_181148.md",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/skills/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman.svg",
+    "Analista de Investimentos/09_SKILLS/skill/caveman/plugins/caveman/assets/caveman-small.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/terminal.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.svg",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.png",
+    "Analista de Investimentos/09_SKILLS/skill/get-shit-done/assets/gsd-logo-2000-transparent.svg",
+    "skill/caveman/plugins/caveman/skills/caveman/assets/caveman.svg"
+  ]
+}

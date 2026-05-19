@@ -1,0 +1,191 @@
+# Roadmap — Investment Intelligence Platform
+*Created: 2026-05-06*
+
+---
+
+## Phases
+
+- [x] **Phase 1: Foundation & Cleanup** — Secure credentials, consolidate codebases, wire retry/logging infrastructure (completed 2026-05-10)
+- [x] **Phase 2: Reliable Data Ingestion** — All data sources (CVM, BCB, B3, news) running with retry, validation, and freshness tracking (completed 2026-05-11)
+- [x] **Phase 3: Financial Engine** — LTM aggregation, multiples, DCF (with bank bifurcation), and technical signals computed per ticker (completed 2026-05-11)
+- [x] **Phase 4: Intelligence Layer** — AI investment thesis generated, validated, cost-controlled, and versioned per ticker (completed 2026-05-17)
+- [x] **Phase 5: Delivery Layer** — Streamlit dashboard, Telegram alerts, and PDF reports operational end-to-end (completed 2026-05-18)
+
+---
+
+## Phase Details
+
+### Phase 1: Foundation & Cleanup
+**Goal:** The codebase has a single canonical source, no credentials in source code, and every external call is wrapped with retry logic and structured logging — making all subsequent phases safe to build.
+**Depends on:** —
+**Requirements:** FOUND-01, FOUND-02, FOUND-03, FOUND-04
+**UI hint:** no
+
+**Success Criteria:**
+1. Running `python -m src.main` from `Analista de Investimentos/12_PYTHON/` is the one and only way to execute the platform; the three duplicate directory trees are archived/deleted and no import path references them.
+2. The platform refuses to start in production mode if `ANTHROPIC_API_KEY`, `TELEGRAM_BOT_TOKEN`, or any required credential is absent from `.env`; no token appears as a literal string anywhere in source code.
+3. Any external API call (CVM, BCB, yfinance, Anthropic, Telegram) that fails due to a transient network error automatically retries with exponential backoff; a permanent failure surfaces a structured error log entry rather than an unhandled exception crash.
+4. Every pipeline run produces structured log output (module name, ticker, run ID) in `logs/`; log files rotate daily; a developer can trace any execution path end-to-end from log output alone.
+
+**Plans:** 3 plans
+Plans:
+- [x] 01-01-PLAN.md — Codebase consolidation: archive duplicate src/ trees, fix import paths, sys.path cleanup, venv rebuild
+- [x] 01-02-PLAN.md — Credentials & config migration: remove hardcoded tokens, wire pydantic-settings + .env, startup validation
+- [x] 01-03-PLAN.md — Gap closure: create errors.py (IngestionError), extend retry.py (jitter + IngestionError), add bind_run_id to logger.py, move CR-04 production guard inside app()
+
+---
+
+### Phase 2: Reliable Data Ingestion
+**Goal:** All four data source categories (CVM filings, BCB macro, B3 prices, news feeds) ingest reliably on a daily schedule, with freshness timestamps, deduplication, and gap detection — so the Financial Engine always operates on trustworthy data.
+**Depends on:** Phase 1
+**Requirements:** ING-01, ING-02, ING-03, ING-04, ING-05, ING-06, ING-07
+**UI hint:** no
+
+**Success Criteria:**
+1. A daily scheduler run ingests CVM DFP (annual), ITR (quarterly), and IPE (corporate events) for all watchlist tickers; parsed records are stored with account code normalization and raw XML preserved; ITR quarters are reconciled against DFP for overlapping periods.
+2. BCB macro series (Selic, IPCA, PTAX, CDS Brazil, PIB) are fetched via the SGS API with per-series freshness timestamps; a stale or failed fetch produces a warning log entry with the last-known timestamp — not a silent fallback to hardcoded 2025 values.
+3. B3 OHLCV price series for all watchlist tickers are downloaded daily; corporate actions are adjusted; data gaps are flagged with an explicit `GAP` marker rather than interpolated.
+4. News articles from 17+ RSS sources are ingested, deduplicated by URL, and tagged with the relevant watchlist ticker where detectable; IPE event PDFs have their text extracted and stored.
+5. Every scheduler run produces a structured summary log: duration, records updated per source, and any per-source failures — visible in `logs/`.
+
+**Plans:** 4 plans (planned 2026-05-10)
+
+**Wave 1** *(parallel — no file overlap)*
+- [x] 02-01-PLAN.md — ingestion.db schema (db.py) + CVM DFP/ITR/IPE: CSV download, watchlist filtering, raw CSV preservation, ITR dedup, IPE classification + PDF extraction
+- [x] 02-02-PLAN.md — BCB SGS macro ingestion (bcb.py) + B3 OHLCV prices (b3_scraper.py extension): freshness check, CDS bp conversion, gap detection
+
+**Wave 2** *(blocked on Wave 1 — needs ingestion.db schema from 02-01)*
+- [x] 02-03-PLAN.md — News sync (news_sync.py): cross-DB bridge from news_hunter/banco.db to ingestion.db with URL deduplication and B3 ticker tagging
+
+**Wave 3** *(blocked on Wave 2 — wires all three modules into scheduler)*
+- [x] 02-04-PLAN.md — Ingestion scheduler wiring: 4 job functions in scheduler.py, bind_run_id, D-15 summary logs, schedules.yaml cron entries
+
+**Cross-cutting constraints:**
+- @retry(attempts=3, delay=2.0, backoff=2.0, jitter=0.5) on every external API call (all plans)
+- bind_run_id("ingest") at top of every scheduler job (Plan 04)
+- TEXT UUID primary keys, ISO date strings, no AUTOINCREMENT (Plan 01 schema — D-06)
+
+---
+
+### Phase 3: Financial Engine
+**Goal:** For every watchlist ticker, the platform computes LTM financials, standard valuation multiples, a DCF fair value (with bank/industrial bifurcation), and technical momentum signals — establishing the quantitative foundation the AI layer requires.
+**Depends on:** Phase 3
+**Requirements:** FIN-01, FIN-02, FIN-03, FIN-04, FIN-05, FIN-06
+**UI hint:** no
+
+**Success Criteria:**
+1. LTM (Last Twelve Months) financials — revenue, EBITDA, net income, FCF, net debt — are computed for every watchlist ticker as a rolling sum of the trailing 4 ITR quarters, reconciled against the latest DFP annual; the computation runs automatically after each ingestion cycle.
+2. Standard multiples (P/E, EV/EBITDA, P/BV, dividend yield, EV/Revenue) are updated daily using the latest LTM financials and current market price; stale or missing prices produce a flagged record rather than a zero-division error.
+3. DCF fair value is computed per ticker with WACC derived from Selic + CDS Brazil + equity risk premium, 5-year FCF projections, and configurable terminal growth rate; output includes fair value in BRL and upside/downside percentage vs current price.
+4. The DCF model rejects invalid inputs before running (terminal growth >= WACC, WACC <= 5%) and flags fair values outside the 0.1x–5.0x price range as "FORA DO INTERVALO CONFIAVEL" — no zero-value or astronomically wrong outputs reach downstream consumers.
+5. Bank tickers (ITUB4, BBDC4, BBAS3, SANB11, BPAC11, etc.) are automatically routed to a NIM-based / ROE / dividend discount model; industrial tickers receive the standard EBITDA/FCFF DCF; technical signals (RSI-14, MACD, MA crossover, composite momentum score) are computed for all tickers.
+
+**Plans:** 5 plans (planned 2026-05-11)
+
+**Wave 0** *(must complete first — fixes blocking bugs and creates test + schema infrastructure)*
+- [x] 03-01-PLAN.md — BUG-01 fix (sector_config.py encoding), GAP-02 fix (account_mapper.py import), financial_* DB schema (db.py), LTM aggregation engine + AccountMapper wire-up (financial_engine.py), test stubs
+
+**Wave 1** *(parallel — no file overlap between 03-02 and 03-04)*
+- [x] 03-02-PLAN.md — Multiples computation: _get_current_price(), _compute_multiples(), industrial + bank routing, missing-price flagging
+- [x] 03-04-PLAN.md — Bank financial model: _compute_bank_model(), run_ddm() wire-up, bank LTM via BankAccountMapper, EBITDA=NULL for banks
+
+**Wave 2** *(blocked on Wave 0 and Wave 1 — reads from financial_ltm)*
+- [x] 03-03-PLAN.md — DCF engine: compute_wacc() (live Selic+CDS from macro_series), _validate_dcf_inputs() (T-DCF-01 guard), _compute_dcf_industrial() (dcf_fcff + ev_ebitda_multiple paths)
+
+**Wave 3** *(blocked on all prior waves — signals + scheduler wiring)*
+- [x] 03-05-PLAN.md — Technical signals (RSI-14, MACD 12/26/9, MA50/200, momentum score 0-100) + job_financial_engine() scheduler wiring + schedules.yaml cron entry
+
+**Cross-cutting constraints:**
+- All SQL uses parameterized queries — never f-string with ticker (T-DCF-02)
+- _validate_dcf_inputs() MUST fire before run_dcf() — T-DCF-01 (terminal_growth >= WACC → infinity)
+- EBITDA=NULL for all bank tickers (COSIF accounting — no EBIT line)
+- financial_* tables use INSERT OR REPLACE keyed by (ticker, computed_date) — D-04
+
+---
+
+### Phase 4: Intelligence Layer
+**Goal:** The platform generates a schema-enforced, data-grounded AI investment thesis (bull/bear case, drivers, risks, fair value, positioning, confidence) per ticker in Portuguese — regenerating only when input data changes, and storing versioned history.
+**Depends on:** Phase 3
+**Requirements:** INT-01, INT-02, INT-03, INT-04, INT-05, INT-06
+**UI hint:** no
+
+**Success Criteria:**
+1. Running thesis generation for a ticker produces a structured Pydantic-validated output containing: bull case, bear case, 3–5 key drivers, 3–5 risks, fair value in BRL, methodology disclosure, positioning (COMPRAR / MANTER / VENDER), confidence (ALTA / MEDIA / BAIXA), and rationale — all in Portuguese; the schema is enforced by `instructor`; generation never silently returns a partial or empty thesis.
+2. Every number in the thesis (fair value, multiples, macro rates) is injected from Financial Engine outputs — the LLM performs synthesis only; a post-generation cross-check confirms the thesis fair value matches the DCF output within ±10% tolerance, and flags any deviation.
+3. Thesis regeneration is gated by an input hash (DCF result + top multiples + macro snapshot + top 3 headlines + signals); a ticker whose data has not changed since the last generation does not trigger a new Claude API call; maximum 2 regenerations per ticker per day are enforced.
+4. Every thesis version is stored in the database with its input hash, generation timestamp, and a diff summary relative to the previous version; a developer can query any ticker's thesis history and see what changed and when.
+5. Opportunity signals (price vs DCF divergence >20%, MA crossover with fundamental backing, IPE event impact) are computed per ticker and ranked by conviction score; the top 3 opportunities are available as a structured output for downstream delivery.
+
+**Plans:** 4 plans (planned 2026-05-17)
+
+**Wave 0** *(foundation — must run first)*
+- [x] 04-01-PLAN.md — Dependencies (instructor, jinja2) + DB schema (thesis_versions, opportunity_signals, thesis_latest VIEW) + Pydantic models (InvestmentThesis, Driver, Risk, OpportunitySignal, ThesisResult) + Jinja2 template stub + test stubs (completed 2026-05-17)
+
+**Wave 1** *(blocked on Wave 0 — models and schema must exist)*
+- [x] 04-02-PLAN.md — Core thesis generation: IntelligenceClient (instructor.from_provider ANTHROPIC_TOOLS), compute_input_hash (SHA-256 gate), _assemble_prompt_data (6-table read), Jinja2 render, DCF cross-check, hash gate + daily cap, thesis_versions write + version_num auto-increment + diff_summary (completed 2026-05-17)
+
+**Wave 2** *(blocked on Wave 1 — run_ticker() scaffold must exist)*
+- [x] 04-03-PLAN.md — Opportunity signals: compute_opportunity_signals() (DCF_DIVERGENCE, MOMENTUM_CROSSOVER, IPE_EVENT), conviction scoring (D-17), top-3 filter + opportunity_signals INSERT OR REPLACE; run_ticker() extended (completed 2026-05-17)
+
+**Wave 3** *(final wiring — blocked on Wave 2)*
+- [x] 04-04-PLAN.md — Scheduler wiring: run_all() + job_intelligence() + _JOB_REGISTRY + schedules.yaml cron "0 21 * * 1-5"; complete test coverage; full suite green (completed 2026-05-17)
+
+**Cross-cutting constraints:**
+- All SQL parameterized — never f-string with ticker (T-DCF-02 anti-pattern)
+- instructor.Mode.ANTHROPIC_TOOLS — never JSON mode (D-06)
+- Hard-fail on instructor validation exhaustion → IngestionError; no partial thesis stored (D-05)
+- IPE query must NOT filter on normalized_name IS NOT NULL (Pitfall 7 — IPE rows have NULL normalized_name)
+- temperature=0.1 for Claude calls — never 0 (Pitfall 8)
+
+---
+
+### Phase 5: Delivery Layer
+**Goal:** Analysis, thesis, and opportunity outputs are accessible through a Streamlit dashboard, Telegram alerts, and on-demand PDF reports — all client-ready in Portuguese with proper disclaimers.
+**Depends on:** Phase 4
+**Requirements:** DEL-01, DEL-02, DEL-03, DEL-04, DEL-05
+**UI hint:** yes
+
+**Success Criteria:**
+1. The Streamlit dashboard loads with four pages — Watchlist overview, Asset detail, Macro panel, Opportunities — all populated with live data from the database; the watchlist page renders in under 5 seconds for up to 50 tickers using `st.cache_data` with TTL; every data item displays a freshness timestamp.
+2. The Asset detail page for any ticker shows: current price, valuation multiples, DCF fair value vs price, LTM financial highlights, macro context, recent news, full AI investment thesis (bull/bear, drivers, risks, positioning, confidence) — all without leaving the page.
+3. The Telegram bot sends an alert whenever a ticker's thesis positioning changes (e.g., MANTER → COMPRAR), including ticker, new positioning, confidence level, one-sentence rationale, and the top opportunity of the moment; the daily morning brief delivers macro snapshot, top 3 movers, and top opportunity at a configurable time.
+4. A PDF report generated on demand for any ticker from the Streamlit dashboard contains: thesis summary, DCF + multiples valuation, LTM financial highlights, macro context, key risks, and the CVM IN 598 disclaimer; the report generates and is downloadable in under 30 seconds.
+
+**Plans:** 4 plans (planned 2026-05-18)
+
+**Wave 1** *(foundation — must run first)*
+- [x] 05-01-PLAN.md — src/dashboard/ package + data.py query layer (4 @st.cache_data functions) + pdf_report.py stub + _style.py CSS module + app.py page registration (9 pages, nav ratio update) + fpdf2 install + 4 test stub files
+
+**Wave 2** *(parallel — 05-02 and 05-03 have no file overlap)*
+- [x] 05-02-PLAN.md — 4 Streamlit intelligence pages: inteligencia_watchlist.py (st.dataframe + Styler), inteligencia_ativo.py (thesis expanders + PDF download button), inteligencia_macro.py (Plotly dark charts), inteligencia_oportunidades.py (signal cards + st.progress)
+- [x] 05-03-PLAN.md — Telegram delivery: send_thesis_alert() + send_daily_brief() on TelegramBot; _maybe_send_thesis_alert() trigger in intelligence_layer.py run_ticker(); job_morning_brief() in scheduler.py + _JOB_REGISTRY; schedules.yaml cron "15 8 * * 1-5" (verified 2026-05-18; implemented in 05-01/71198cf)
+
+**Wave 3** *(blocked on Wave 2 — PDF uses download button wired in 05-02)*
+- [x] 05-04-PLAN.md — Full ReportGenerator implementation: all 8 section methods (header, thesis, bull/bear, drivers/risks, valuation, financials, macro, CVM IN 598 disclaimer); generate() returns bytes(self.output()); generate_from_fixture() for tests; test_delivery_pdf.py 3 tests passing (completed 2026-05-18)
+
+**Cross-cutting constraints:**
+- All SQL parameterized — never f-string with ticker (T-05-01)
+- get_connection() is NOT a context manager — always try/finally conn.close() (PATTERNS.md Pitfall 2)
+- All @st.cache_data functions live exclusively in data.py — never in page files (PATTERNS.md Pitfall 3)
+- sys.path two-root bootstrap required in every inteligencia_*.py page file before any src.* import (PATTERNS.md Pattern D)
+- PDF generation in-memory (BytesIO / bytes(output())) — no file writes (D-17)
+- Morning brief cron: "15 8 * * 1-5" — NOT "0 8 * * 1-5" (bcb_macro already at 08:00)
+- thesis_json in thesis_latest is TEXT — always json.loads() before accessing .drivers/.risks (PATTERNS.md Pitfall 5)
+
+---
+
+## Progress Table
+
+| Phase | Plans Complete | Status | Completed |
+|-------|----------------|--------|-----------|
+| 1. Foundation & Cleanup | 3/3 | Complete | 2026-05-10 |
+| 2. Reliable Data Ingestion | 4/4 | Complete | 2026-05-11 |
+| 3. Financial Engine | 5/5 | Complete | 2026-05-11 |
+| 4. Intelligence Layer | 4/4 | Complete | 2026-05-17 |
+| 5. Delivery Layer | 4/4 | Complete | 2026-05-18 |
+
+---
+*Roadmap created: 2026-05-06*
+*Phase 3 planned: 2026-05-11*
+*Phase 4 planned: 2026-05-17*
+*Phase 5 planned: 2026-05-18*
